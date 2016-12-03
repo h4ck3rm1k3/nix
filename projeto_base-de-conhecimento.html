@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Base de conhecimento</title>
+<link rel="stylesheet" href="css.css" type="text/css">
+</head>
+<body>
+<hr>
+<pre>
+Língua Portuguesa:
+
+Sócrates é um pessoa.
+Local de nascimento de Sócrates é Deme.
+Ano de nascimento de Sócrates é -470.
+
+Aristóteles é um pessoa.
+Local de nascimento de Aristóteles é Stagira.
+Ano de nascimento de Aristóteles é -384.
+
+</pre>
+<hr>
+<pre>
+Tabela:
+
+Pessoa        Local de nascimento   Ano de nascimento
+Sócrates      Deme                  -470
+Aristóteles   Stagira               -384
+</pre>
+<hr>
+<pre>
+Linguagem Prolog:
+
+person(socrates).
+birthplace(socrates,deme).
+birthyear(socrates,-470).
+
+person(aristotle).
+birthplace(aristotle,stagira).
+birthyear(aristotle,-384).
+</pre>
+<hr>
+<pre>
+RDF N-Triples:
+
+&lt;http://dbpedia.org/resource/Socrates&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://dbpedia.org/ontology/Person&gt; .
+&lt;http://dbpedia.org/resource/Socrates&gt; &lt;http://dbpedia.org/ontology/birthPlace&gt; &lt;http://dbpedia.org/resource/Deme&gt; .
+&lt;http://dbpedia.org/resource/Socrates&gt; &lt;http://dbpedia.org/ontology/birthYear&gt; "-0470"^^&lt;http://www.w3.org/2001/XMLSchema#gYear&gt; .
+
+&lt;http://dbpedia.org/resource/Aristotle&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://dbpedia.org/ontology/Person&gt; .
+&lt;http://dbpedia.org/resource/Aristotle&gt; &lt;http://dbpedia.org/ontology/birthPlace&gt; &lt;http://dbpedia.org/resource/Stagira_(ancient_city)&gt; .
+&lt;http://dbpedia.org/resource/Aristotle&gt; &lt;http://dbpedia.org/ontology/birthYear&gt; "-0384"^^&lt;http://www.w3.org/2001/XMLSchema#gYear&gt; .
+</pre>
+<hr>
+<pre>
+RDF Turtle:
+
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix dbo: &lt;http://dbpedia.org/ontology/&gt; .
+@prefix dbp: &lt;http://dbpedia.org/resource/&gt; .
+
+dbp:Socrates rdf:type dbo:Person .
+dbp:Socrates dbo:birthPlace dbp:Deme .
+dbp:Socrates dbo:birthYear "-0470"^^xsd:gYear .
+
+dbp:Aristotle rdf:type dbo:Person .
+dbp:Aristotle dbo:birthPlace dbp:Stagira_(ancient_city) .
+dbp:Aristotle dbo:birthYear "-0384"^^xsd:gYear .
+</pre>
+</body>
+</html>

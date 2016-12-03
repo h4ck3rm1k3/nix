@@ -1,0 +1,17 @@
+abdução:  Se Y é verdade e X implica em Y, então X é verdade
+– Fumar causa câncer de pulmão
+– José teve câncer de pulmão
+– Lei Geral: José era um fumante.
+
+Todos os feijões deste saco são brancos.
+Estes feijões são brancos.
+Estes feijões provêm deste saco.
+
+A é B
+C é B
+C é A
+
+Homem é mamífero
+Rex é mamífero
+Rex é homem (pode ser um cachorro)
+

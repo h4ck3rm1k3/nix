@@ -1,0 +1,8 @@
+DIR=.
+cat ${DIR}/TBase/* | \
+sed 's/\( \(a\|o\|um\|uma\) [^ ]* é \(um\|uma\) [^ ]*[ .,;:?]\{1\}\)/\n\1\n/g' | \
+egrep ' (a|o|um|uma) [^ ]* é (um|uma) [^ ]*[ .,;:?]{1}' | \
+egrep -v 'que|qual|resultado|exemplo|seguir|primeir[ao]|segund[ao]|terceir[ao]' | \
+egrep -v '(absurd[ao]|absurdamente|acho|acostumad[ao]|acreditamos|acredit[ao]|adequad[ao]|ágil|algum|alguma|algumas|alta|amigável|bastante|bem|boa|bob[ao]|bom|bonit[ao]|cert[ao]|coisa|comprid[ao]|curt[ao]|devagar|difícil|dificilmente|eficiente|elevad[ao]|errad[ao]|excelente|fácil|fantástic[ao]|fei[ao]|forte|fortemente|frac[ao]|fraquinh[ao]|horrível|import[ao]|importante|intens[ao]|grande|lent[ao]|leve|levemente|long[ao]|maioria|mais|mal|mau|maximizar|melhor|melhores|menos|mentira|minimizar|moderad[ao]|muit[ao]|nada|nunca|ótim[ao]|parece|parecid[ao]|pequen[ao]|péssimo|pior|piores|pouc[ao]|provavelmente|quase|rápid[ao]|razoável|ruim|semelhante|sempre|sever[ao]|similar|simples|suficiente|tod[ao]|tudo|útil|utilidade|vári[ao]s|verdade)' | \
+sort -u
+

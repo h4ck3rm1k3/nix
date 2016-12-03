@@ -1,0 +1,67 @@
+wget http://commondatastorage.googleapis.com/freebase-public/rdf/freebase-rdf-latest.gz
+
+https://developers.google.com/freebase/data
+uncompressed 250 GB 
+compressed    30 GB 
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+Updates: The N-Triples files containing the updates can be found at http://live.dbpedia.org/changesets.
+http://live.dbpedia.org/liveupdates/
+
+http://live.dbpedia.org/dumps/dbpedia_2015_06_02.nt.gz   4GB
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+lod-cloud.net
+diagrama com as bases de conhecimento existentes e link para download.
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+microdata
+http://portal.inep.gov.br/basica-levantamentos-acessar
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+http://geneontology.org/ (baixado)
+http://geneontology.org/page/download-ontology
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+http://pingthesemanticweb.com/
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+Open Biomedical Ontologies
+http://www.berkeleybop.org/ontologies/
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+Talvez seja possível armazenar RDF graph em algum desses endereços
+
+datavis and open data
+
+http://www.datacouch.com/
+ 
+http://buzzdata.com
+
+dump wikidata
+http://tools.wmflabs.org/wikidata-exports/rdf/index.php?content=exports.php
+
+http://webprotege.stanford.edu/
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+the URI http://neuroweb.med.yale.edu/senselab/neuron_ontology.owl#Dopamine was changed to http://purl.org/ycmi/senselab/neuron_ontology.owl#Dopamine ('ycmi' stands for 'Yale Center for Medical Informatics'). 
+
+The final products of the project are accessible at http://neuroweb.med.yale.edu/senselab/. A SVN repository can be accessed through a web interface at http://neuroweb.med.yale.edu/svn/trunk/ontology/senselab/. The SPARQL endpoint can be accessed at http://hcls.deri.ie/sparql.
+
+
+A SPARQL endpoint for the SenseLab ontologies was set up using the open source version of the Openlink Virtuoso server [VIRTUOSO]. A SPARQL endpoint is a service that allows clients to query a RDF store with the SPARQL query language through simple HTTP GET requests.
+
+http://www.berkeleybop.org/ontologies/ All Open Biomedical Ontologies (OBO) available from Berkeley Bioinformatics Open-source Projects
+Common Anatomy Reference Ontology , http://www.obofoundry.org/cgi-bin/detail.cgi?id=caro 
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+

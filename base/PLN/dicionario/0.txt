@@ -1,0 +1,26 @@
+
+Estudar o código do aplicativo.
+
+rm src/tools/{hunspell.o,.libs/hunspell} ; make && cat teste.txt | src/tools/.libs/hunspell -i utf-8 -l
+
+
+export DICTIONARY=pt_BR
+export DICPATH=./hunspell_dicionario
+cat teste.txt | ./hunspell -i utf-8 | grep '&' | cut -d' ' -f2
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Aplicativo
+
+/bin/bash ../../libtool --tag=CXX   --mode=link g++  -g -O2   -o hunspell hunspell.o ../parsers/libparsers.a ../hunspell/libhunspell-1.3.la
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Biblioteca
+
+/bin/bash ../../libtool --tag=CXX   --mode=compile g++ -DHAVE_CONFIG_H -I. -I../..    -fvisibility=hidden -DBUILDING_LIBHUNSPELL -g -O2 -MT hunspell.lo -MD -MP -MF .deps/hunspell.Tpo -c -o hunspell.lo hunspell.cxx
+
+/bin/bash ../../libtool --tag=CXX   --mode=link g++ -fvisibility=hidden -DBUILDING_LIBHUNSPELL -g -O2 -no-undefined  -o libhunspell-1.3.la -rpath /usr/local/lib affentry.lo affixmgr.lo csutil.lo dictmgr.lo hashmgr.lo hunspell.lo suggestmgr.lo phonet.lo filemgr.lo hunzip.lo replist.lo
+
+g++ -DHAVE_CONFIG_H -I. -I../.. -I../../src/hunspell -I../../src/parsers    -g -O2 -MT hunspell.o -MD -MP -MF .deps/hunspell.Tpo -c -o hunspell.o hunspell.cxx
+

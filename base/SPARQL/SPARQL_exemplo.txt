@@ -1,0 +1,54 @@
+sudo iptables -t filter -I INPUT       -i lo -p tcp --dport 3030 -j ACCEPT
+sudo iptables -t filter -I INPUT       -i lo -p tcp --sport 3030 -j ACCEPT
+sudo iptables -t nat    -I OUTPUT      -o lo -p tcp --dport 3030 -j ACCEPT
+sudo iptables -t nat    -I OUTPUT      -o lo -p tcp --sport 3030 -j ACCEPT
+sudo iptables -t mangle -I POSTROUTING -o lo -p tcp --dport 3030 -j ACCEPT
+sudo iptables -t mangle -I POSTROUTING -o lo -p tcp --sport 3030 -j ACCEPT
+
+DIR=
+cd ${DIR}/kit_RDF
+$(pwd)/jre/bin/java -Xmx1200M -jar $(pwd)/fuseki-server.jar > $(pwd)/stderrout.log 2>&1 &
+
+firefox http://localhost:3030/
+
+
+rm onto.nt
+BASE=onto
+wget \
+"--user-agent=Nix" \
+"--header=Accept: application/sparql-results+json"  \# text/tab-separated-values \
+"--header=Accept-Language: en-US,en,pt_BR,pt_PT,pt" \
+"--post-data=query=
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?subject ?predicate ?object
+WHERE {
+   ?subject rdf:type ?object
+}
+" \
+"--output-document=${BASE}.nt" \
+http://localhost:3030/${BASE}/query
+gedit onto.nt
+
+
+rm onto.nt
+BASE=onto
+wget \
+"--user-agent=Nix" \
+"--header=Accept: application/n-triples" \
+"--header=Accept-Language: en-US,en,pt_BR,pt_PT,pt" \
+"--post-data=query=
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+CONSTRUCT{
+?subject ?predicate ?object
+}
+WHERE{
+?subject ?predicate ?object
+}
+" \
+"--output-document=${BASE}.nt" \
+http://localhost:3030/${BASE}/query
+gedit onto.nt
+
+
+wget 'http://localhost:3030/onto/query?query=CONSTRUCT%7B%3Fsubject+%3Fpredicate+%3Fobject%7DWHERE%7B%3Fsubject+%3Fpredicate+%3Fobject%7D'
+

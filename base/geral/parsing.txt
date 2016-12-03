@@ -1,0 +1,1 @@
+parsing: produz árvore de derivação sintática. sujeito, predicado, etc.

@@ -1,0 +1,49 @@
+#'--header=Accept: application/sparql-results+json' \
+#'--header=Accept: application/sparql-results+xml' \
+
+BASE=teste5
+wget '--user-agent=Nix' \
+'--header=Accept: application/sparql-results+json' \
+'--header=Accept-Language: en-US,en,pt_BR,pt_PT,pt;q=0.5' \
+'--post-data=query=SELECT+%3Fsubject+%3Fpredicate+%3Fobject%0AWHERE+%7B+%3Fsubject+%3Fpredicate+%3Fobject+%7D' \
+http://localhost:3030/${BASE}/query
+
+mv query ${BASE}.nt
+
+sed -i -n '/"subject":/{N;N;p}' ${BASE}.nt
+
+sed -i -n '
+s/\\"/%22/g;
+
+ /^[ ]*"[^"]*": { "type": "bnode"/ {
+s/^[ ]*"[^"]*": { "type": "bnode" , "value": "\([^"]*\)" \}/_:\1/;
+p;
+}
+
+ /^[ ]*"[^"]*": { "type": "uri"/ {
+s/^[ ]*"[^"]*": { "type": "uri" , "value": "\([^"]*\)" \}/<\1>/;
+p;
+}
+
+ /^[ ]*"object": { "type": "literal" , "value"/{
+s/^[ ]*"object": { "type": "literal" , "value": "\([^"]*\)" \}/"\1"^^<http:\/\/www.w3.org\/2001\/XMLSchema#string>/;
+p;
+}
+
+ /^[ ]*"object": { "datatype": "/{
+s/^[ ]*"object": { "datatype": "\([^"]*\)" , "type": "typed-literal" , "value": "\([^"]*\)" \}/"\2"^^<\1>/;
+p;
+}
+
+ /^[ ]*"object": { "type": "literal" , "xml:lang"/{
+s/^[ ]*"object": { "type": "literal" , "xml:lang": "\([^"]*\)" , "value": "\([^"]*\)" \}/"\2"@\1/;
+p;
+}
+' ${BASE}.nt
+
+sed -i 'N;N;s/,\n//g;s/$/ ./' ${BASE}.nt
+
+mv ${BASE}.nt query2.ttl
+sort query2.ttl > ${BASE}.nt
+rm query2.ttl
+

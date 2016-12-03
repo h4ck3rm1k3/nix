@@ -1,0 +1,24 @@
+Tokenizer: splits text into individual tokens, basically words and punctuation symbols.
+• Sentence splitter: detects sentence boundaries.
+• Part-of-Speech tagger: assigns a syntactic category to each token.
+• Lemmatizer: reduces each token to its lemma, i.e. base form.
+• JAPE transducer for shallow parsing: identifies chunks of tokens which constitute e.g. noun phrases or verb phrases.
+
+GATE (General Architecture for Text Engineering)
+O GATE é o framework de desenvolvimento de sistemas para processamento de linguagem natural desenvolvido na Universidade de Sheffield.
+http://gate.ac.uk
+
+outras ferramentas:
+Weka ( WITTEN; FRANK , 2005)
+UIMA ( FERRUCCI; LALLY , 2004)
+Lucene ( HATCHER; GOSPODNETIC , 2005)
+
+Lucene – É uma biblioteca Java para recuperação da informação.
+
+LingPipe – É uma biblioteca Java para processamento de textos usando linguística computacional. Os objetivos para a utilização deste componente são:
+- Reconhecer os conceitos da ontologia (também chamados de reconhecimento de entidades).
+- Escolher quais das entradas (sinônimos) encontradas na Wordnet, para um determinado substantivo, pertence ao contexto da pergunta.
+- Etiquetagem sintática.
+
+Stanford – É um conjunto de ferramentas para análise da linguagem natural. O objetivo é lematizar as palavras.
+

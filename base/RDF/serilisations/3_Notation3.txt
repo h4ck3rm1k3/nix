@@ -1,0 +1,35 @@
+
+Notation3, or N3, is a non-XML serialization of RDF, is much more compact and readable than XML RDF notation. 
+
+Filename extension: .n3
+Internet media type: text/n3;charset=utf-8
+Specification: http://www.w3.org/TeamSubmission/n3/
+
+An editing mode of N3 for gedit
+http://jamesrdf.blogspot.fr/2009/04/in-searching-for-highlighting-mode-for.html
+
+
+Exemplo:
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+ 
+ <http://en.wikipedia.org/wiki/Tony_Benn>
+   dc:title "Tony Benn";
+   dc:publisher "Wikipedia".
+
+
+Exemplo:
+@prefix : <http://www.w3.org/ns/auth/cert#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix bob: <https://bob.example/profile#> .
+@prefix rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+bob:me a foaf:Person;
+  foaf:name "Bob";
+  foaf:knows <https://example.edu/p/Alois#MSc>;
+  :key [ a :RSAPublicKey;
+    rdfs:label "made on 23 November 2011 on my laptop";
+    :modulus "cb24ed85d64d794b69c70..."^^xsd:hexBinary;
+    :exponent 65537 ;
+   ] .
+

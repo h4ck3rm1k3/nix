@@ -1,0 +1,71 @@
+Palavras-chave: Sistema de Pergunta-Resposta, Ontologia, e Recuperação da Informação.
+
+Usou o Lucene para eliminar palavras irrelevantes (stopwords)
+usou o Lingpipe identificar os conceitos da ontologia na pergunta.
+As palavras (exceto os conceitos da ontologia) são lematizadas com o Stanford CoreNLP.
+As palavras simples (que não são conceitos da ontologia) são etiquetadas, cada qual com sua classe gramatical correspondente, usando o Lingpipe.
+Os conceitos são enviados para a ontologia, a fim de raciocinar e retornar outros conceitos subentendidos. Usou o Pellete, Jena.
+A pergunta analisada é enviada para a Web com o fim de selecionar as páginas candidatas. Usou Web-Harvest.
+As páginas candidatas são transformadas em documentos passíveis de extração, ou seja, toda formatação é removida. Usou HTMLCleaner, Jtidy.
+http://htmlcleaner.sourceforge.net/
+http://jtidy.sourceforge.net/
+
+RTE (Recognising Textual Entailment – Identificação de Implicação Textual)
+Um texto T implica outro texto hipótese H.
+Pergunta: "Quem pintou O Grito?"
+Texto: "A mais famosa pintura da Noruega, O Grito de Edvard Munch"
+Implicação: "Edvard Munch pintou O Grito".
+
+A implicação realizada pelo componente tecnológico RTE desta dissertação é puramente sintática, ou seja, se baseia nas relações gramaticais para concluir se um pedaço de texto implica em outro texto, ao passo que inferência realizada pela ontologia é lógica ou matemática. Entretanto existem outros componentes tecnológicos RTE que realizam a implicação baseado em outras técnicas, como por exemplo: lógica de primeira ordem (Nutcracker13). O componente tecnológico utilizado para realizar a implicação textual é o VENSES. A proposta de utilização do RTE neste projeto é verificar se a resposta provável implica na pergunta analisada. Se o retorno for verdadeiro, a resposta será retornada.
+13 http://svn.ask.it.usyd.edu.au/trac/candc/wiki/nutcracker
+
+
+O recurso utilizado da biblioteca Stanford NLP neste projeto de dissertação é a lematização.
+
+A lematização é um processo de normalização morfológica que reduz os itens lexicais.
+
+stemming: Reduz todas as palavras com o mesmo radical a uma forma denominada stem (similar ao próprio radical).
+São eliminados afixos oriundos de derivação ou de flexão (em alguns casos, apenas o sufixo de palavras são retirados).
+Exemplo: "construções" e "construiremos" seriam reduzidas ao stem "constru".
+
+lemmatization: Redução à forma canônica, reduz os verbos ao infinitivo e os adjetivos à forma masculina singular.
+Exemplo: "construções" e "construiremos" seriam reduzidos a "construção" e "construir".
+
+"Quais são as funções básicas de um sistema operacional?"
+o conceito operating system é selecionado.
+as palavras restantes da pergunta são lematizadas: basic functions > function basic
+
+Antes de agregar os sinônimos, é realizado um reconhecimento das classes gramaticais da palavra. A palavra que possui a etiqueta "_nn" é reconhecida como substantivo, em nosso exemplo foi identificado à palavra "function_nn".
+
+Em seguida o agente consulta na Wordnet os sinônimos do substantivo "function" e os agrega na pergunta analisada. 
+purpose role use
+
+O próximo passo é agregar os conceitos da ontologia a fim de enriquecer a pergunta analisada. Portanto o conceito "operating system" é submetido à ontologia. 
+Nesse exemplo a inferência na ontologia retornou o conceito "OS" que é fruto de uma relação lógica do tipo equivalente.
+
+Agora temos: OS function basic purpose role use operating system
+
+====================================================================
+
+perguntas WH-question (O que, Quem, Quando, Onde, Qual, Por que, De quem, Qual e Como) sobre pessoas, datas, nomes, localidades, quantidade.
+
+exemplo
+Qual é a capital do Brasil?
+Quando Bob Marley morreu?
+
+Se a pergunta iniciar com Quem ou De quem, a classificação da pergunta é PESSOA. Se a pergunta iniciar com Onde , a classificação é LOCALIZAÇÃO. 
+
+Padrões refletem relacionamentos diretos entre a pergunta e sua resposta.
+Por exemplo, (1) Quando foi inventado o telefone? Um padrão de resposta é encontrado na pergunta: O telefone foi inventado em <resposta>. Outros relacionamentos sintáticos predizem outros padrões de resposta, exemplo: (1) Inventaram o telefone em <resposta>, (2) O telefone, inventado em <resposta>, (3) em <resposta> o telefone foi inventado.
+
+
+PowerAqua (LOPEZ et al., 2011): na análise da questão utiliza um componente linguístico para processar a consulta. A saída desse componente é um conjunto de triplas linguísticas (< sujeito, predicado, objeto>) que é mapeado para a consulta do usuário. Assim é possível realizar buscas das respostas em bases OWL/RDF.
+
+
+Análise da pergunta: extrair as palavras chaves, lematizar as palavras, remover as palavras irrelevantes, enriquecer a pergunta com sinônimos da Wordnet, realizar inferências nos conceitos da ontologia, resolver o tipo semântico da pergunta e obter a pergunta resolvida do banco AIML.
+As stopwords são palavras insignificantes para a recuperação de informação.
+Para a pergunta: Quem inventou o Linux? O tipo semântico é uma Pessoa. Então a resposta deve ter um formato compatível com o tipo semântico.
+
+"What are the basic functions of an operating system?"
+as stopwords, neste caso, são: what, are, the, of e an.
+

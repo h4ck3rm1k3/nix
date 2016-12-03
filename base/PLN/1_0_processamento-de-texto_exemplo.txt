@@ -1,0 +1,12 @@
+Text Processing
+
+Texto: Many local election officials and voting machine companies are fighting paper trails, in part because they will create more work and will raise difficult questions if the paper and electronic tallies do not match. 
+
+POS Tagging:  Many/JJ local/JJ election/NN officials/NNS and/CC voting/NN machine/NN companies/NNS are/VBP fighting/VBG paper/NN trails,/NN in/IN part/NN because/IN they/PRP will/MD create/VB more/JJR work/NN and/CC will/MD raise/VB difficult/JJ questions/NNS if/IN the/DT paper/NN and/CC electronic/JJ tallies/NNS do/VBP not/RB match./JJ
+
+NP Chuking: [ Many/JJ local/JJ election/NN officials/NNS ] and/CC [ voting/NN machine/NN companies/NNS ] are/VBP fighting/VBG [ paper/NN trails,/NN ] in/IN [ part/NN ] because/IN [ they/PRP ] will/MD create/VB [ more/JJR work/NN ] and/CC will/MD raise/VB [ difficult/JJ questions/NNS ] if/IN [ the/DT paper/NN ] and/CC [ electronic/JJ tallies/NNS ] do/VBP not/RB [ match./JJ]
+
+Stopword Elimination:  local/JJ election/NN officials/NNS, voting/NN machine/NN companies/NNS ,  paper/NN trails,/NN, part/NN, work/NN,  difficult/JJ questions/NNS,   paper/NN,  electronic/JJ tallies/NNS, match./JJ
+
+Morphological Analysis: local election official, voting machine company, paper trail, part, work, difficult question, paper, electronic tally
+

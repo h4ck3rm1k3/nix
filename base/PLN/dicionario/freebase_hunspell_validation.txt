@@ -1,0 +1,14 @@
+cat /media/ubuntu/DADOS/freebase_label_pt_1_palavra.txt | (
+read TRIPLA ;
+while [ -n "$TRIPLA" ] ; do 
+PALAVRA=$(echo "$TRIPLA" | cut -d'"' -f2) ;
+OUTPUT=$(echo "$PALAVRA" | src/tools/.libs/hunspell -i utf-8 -l)
+if [ "$PALAVRA" = "$OUTPUT" ] ; then
+  echo "$PALAVRA"
+else
+  echo "OK $PALAVRA"
+fi
+read TRIPLA ;
+done
+)
+

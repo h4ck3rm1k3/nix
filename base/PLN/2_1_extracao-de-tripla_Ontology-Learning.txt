@@ -1,0 +1,57 @@
+http://ontoware.org/projects/text2onto/
+http://gate.ac.uk/download/index.html
+http://wordnet.princeton.edu
+
+Text2Onto usage
+The user specifies a corpus, e.g. a collection of text, HTML or PDF documents, and starts the graphical workflow editor.
+The editor provides her with a list of algorithms which are available for the different ontology learning tasks, and assists her in setting up an appropriate workflow for the kind of ontology she wants to learn as well as to customize the individual ontology learning algorithms to be applied.
+Once the ontology learning process is started, the corpus gets preprocessed by a natural language processing component GATE, before it is passed to the algorithm controller.
+In the following, depending on the configuration of the previously specified workflow, a sequence of ontology learning algorithms is applied to the corpus. Each algorithm starts by detecting changes in the corpus and updating the reference store accordingly. Finally, it returns a set of requests for changes regarding the POM, i.e. the Preliminary Ontology Model to its caller, which could be the algorithm controller, but also a more complex algorithm.
+After the process of ontology extraction is finished, the POM is presented to the user.
+
+POM is able to maintain thousands of conflicting modeling alternatives in parallel.
+Several pre-defined filters will be available for pruning the POM.
+User can select among various ontology writers, which are provided for translating the POM into different ontology representation languages.
+
+
+
+Linguistic preprocessing in Text2Onto starts by tokenization and sentence splitting.
+The resulting annotation set serves as an input for a POS tagger which in the following assigns appropriate syntactic categories to all tokens.
+Finally, lemmatizing is done by a morphological analyzer.
+
+After the basic linguistic preprocessing is done, a JAPE transducer is run over the annotated corpus in order to match a set of particular patterns required by the ontology learning algorithms.
+Whereas the left hand side of each JAPE pattern defines a regular expression over existing annotations.
+
+
+A Learned Ontology Model (LOM) as used by Text2Onto is a collection of instantiated modeling primitives which are independent of a concrete ontology representation language.
+
+
+LOM Modeling Primitives
+
+concept
+Example: man, person
+
+instance
+Example: John, Mary
+
+subconcept-of 
+Example: subconcept-of(man,person)
+
+instance-of
+Example: instance-of(John,person).
+
+relation
+Example: love(person,person)
+
+part-of
+Example: part-of(wheel,car)
+
+equivalence
+Example: equivalence(town,city)
+
+equality
+Example: equality(UN,United Nations)
+
+disjointness
+Example: disjointness(man,woman)
+

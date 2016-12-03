@@ -1,0 +1,10 @@
+The PELLET Open Source OWL DL Reasoner, http://pellet.owldl.org/ 
+
+https://www.w3.org/2000/10/swap/doc/CwmInstall
+apt-get install swap-cwm
+
+
+Alguns "reasoners"
+• OTTER e New Automated Reasoning Kit (SNARK): motores de inferência baseados sobre os dados RDF e o formalismo da lógica de primeira ordem.
+• RACER e FaCT.: (baseados sobre a lógica de descrição) os motores de referência principais do W3C para as inferências sobre ontologias, já implantados em várias aplicações tal como PROTEGE (para a verificação de inconsistência).
+

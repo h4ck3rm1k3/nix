@@ -1,0 +1,7 @@
+TBase:
+ - separar inglês e português
+ - melhorar os nomes
+ - melhorar a conversão de pdf para txt
+ 
+ - obter os cadernos do estudade do Estado de São Paulo de Física, Química, Biologia e Ciências da rede regular e EJA.
+

@@ -1,0 +1,107 @@
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Um cavalo é um animal.
+
+<http://www.example.org/animals#horse> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.example.org/animals#animal> .
+
+<http://www.example.org/animals#horse> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://www.example.org/animals#animal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+RDF describes resources with classes, properties, and values.
+O arquivo abaixo estaria em http://www.example.org/animals
+
+<?xml version="1.0"?>
+<rdf:RDF
+ xml:base="http://www.example.org/animals#"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+   <rdf:Description rdf:ID="animal">
+      <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+   </rdf:Description>
+   <rdf:Description rdf:ID="horse"><!-- descreve uma classe que está sendo criada -->
+      <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+      <rdfs:subClassOf rdf:resource="#animal"/>
+   </rdf:Description>
+</rdf:RDF>
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Since an RDFS class is an RDF resource we can abbreviate the example above by using rdfs:Class instead of rdf:Description, and drop the rdf:type information:
+
+<?xml version="1.0"?>
+<rdf:RDF
+ xml:base="http://www.example.org/animals#">
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   <rdfs:Class rdf:ID="animal" />
+   <rdfs:Class rdf:ID="horse">
+      <rdfs:subClassOf rdf:resource="#animal"/>
+   </rdfs:Class>
+</rdf:RDF>
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Que é equivalente à (file.rdf):
+
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+   <!ENTITY owl  "http://www.w3.org/2002/07/owl#" >
+   <!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#" >
+   <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+   <!ENTITY rdf  "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+<rdf:RDF
+ xmlns     ="http://www.w3.org/2002/07/owl#"
+ xml:base  ="http://www.w3.org/2002/07/owl"
+ xmlns:owl ="http://www.w3.org/2002/07/owl#"
+ xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:xsd ="http://www.w3.org/2001/XMLSchema#">
+   <Class rdf:about="http://www.example.org/animals#animal"/><!-- ? descreve uma classe que já existe -->
+   <Class rdf:about="http://www.example.org/animals#horse">
+      <rdfs:subClassOf rdf:resource="http://www.example.org/animals#animal"/>
+   </Class>
+</rdf:RDF>
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+OWL/XML rendering
+
+<?xml version="1.0"?>
+<!DOCTYPE Ontology [
+   <!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#" >
+   <!ENTITY xml  "http://www.w3.org/XML/1998/namespace" >
+   <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+   <!ENTITY rdf  "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+<Ontology
+ xmlns="http://www.w3.org/2002/07/owl#"
+ xml:base="http://www.w3.org/2002/07/owl#"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+   <Prefix name=""     IRI="http://www.w3.org/2002/07/owl#"/>
+   <Prefix name="owl"  IRI="http://www.w3.org/2002/07/owl#"/>
+   <Prefix name="rdf"  IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+   <Prefix name="xsd"  IRI="http://www.w3.org/2001/XMLSchema#"/>
+   <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+   <Declaration>
+      <Class IRI="http://www.example.org/animals#animal"/>
+   </Declaration>
+   <Declaration>
+      <Class IRI="http://www.example.org/animals#horse"/>
+   </Declaration>
+   <SubClassOf>
+      <Class IRI="http://www.example.org/animals#horse"/>
+      <Class IRI="http://www.example.org/animals#animal"/>
+   </SubClassOf>
+</Ontology>
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+

@@ -1,0 +1,87 @@
+sed -e 's|/usr/bin/awk|$(AWK)|g' -e 's|/usr/local/lib/verbos|$(VDIR)/verbos|g' conjugue > conjugue.tmp
+chmod 755 conjugue.tmp
+mv -f conjugue.tmp conjugue
+
+awk -f conjugue -v BANCO=verbos -v FORMATO=ci -v CMD=T | grep -v "^pôr/" | grep -v "^/R" > v.ispell
+cat v.ispell E.ispell | sort | uniq > br.ispell
+
+# Gera o vocabulario total, flexionado com as flags do br.aff.
+buildhash br.ispell br.aff br.hash
+
+# apenas gera a lista de todas as palavras
+cat br.ispell | ispell -e -d ./br.hash | tr " " "\n" | sort| uniq > palavras.ispell
+
+# Lista todos os paradigmas em uso e o número de vezes que cada um é usado.
+awk -f conjugue -v BANCO=verbos -v FORMATO=n -v CMD=T| grep paradigma|sed 's/ deduzido//'|sort|uniq -c|sort
+
+
+install --mode=644 br.hash br.aff /usr/lib/ispell
+install --mode=755 conjugue /usr/local/bin/conjugue
+install --mode=644 verbos /usr/local/lib/verbos
+
+
+CONJUGUE(1.1)
+
+conjugador de verbos da língua portuguesa
+
+SINOPSE
+   conjugue [-v VARIVEL=valor] ...
+
+DESCRIÇÃO
+   conjugue lê um banco de verbos contendo paradigmas e listas de verbos que se conjugam segundo cada paradigma, e permite conjugar verbos através de uma interface iterativa ou na forma de um comando simples dado no prompt do shell.
+
+   Pode-se passar parâmetros para o conjugue através da opção -v do awk, que permite predefinir o valor de uma variável. As variáveis no caso:
+   BANCO    Path completo do banco de verbos (default /usr/local/lib/verbos).
+   NOVOS    Path completo do arquivo onde o conjugue aprenda verbos novos, que não constam ainda do banco (default $HOME/.conjugue-novos).
+   FORMATO  Formato da saída. A saída  a conjugao do(s) verbos que se deseja conjugar. As possibilidades para a sada so: c (curto, usado para gerar listas de palavras), n (normal, o formato original, um pouco crptico), ci (usado para gerar o dicionário do br.ispell), l (longo, um pouco menos crptico do que o "n") e ll (muito longo, semelhante ao que as gramticas costumam usar). O formato default l.
+   CMD      Execute esse comando. Nesse caso, o conjugue executa o comando dado e abandona. De outra forma, o conjugue apresenta um prompt para a entrada de comandos iterativos. Os comandos disponveis são ?  para mostrar um sumário dos comandos, a para listar as abreviações, n para exibir algumas notas, f para abandonar, e T para conjugar todos os verbos do banco. Para conjugar um verbo determinado, basta entrar com esse verbo no prompt de comandos (ou indicá-lo na linha de comandos como valor inicial de CMD ).
+
+
+EXEMPLOS
+   1. Conjugar o verbo "amar" com a sada no formato muito longo:
+   $ conjugue -v FORMATO=ll -v CMD=amar
+
+   2. Entrar no modo iterativo e exibe as conjugações no formato muito longo:
+   $ conjugue -v FORMATO=ll
+
+   3. Conjugar todos os verbos do banco explicitado, gerando uma lista de radicais para o br.ispell:
+   $ conjugue -v BANCO=verbos -v FORMATO=ci -v CMD=T
+
+
+BANCO DE VERBOS
+   O Banco de verbos contém a conjugação dos paradigmas e, para cada um deles, uma lista de verbos que se conjugam segundo aquele paradigma.  Cada paradigma pode conter também informações para a heurística que deduz o paradigma a ser utilizado nos casos em que o banco no contém essa informação. Segue uma descrição do formato do banco de verbos:
+
+   S == [a-záéíóúàèìòùçãõü]+
+   V == Sr
+   L == [S(,S)*]
+   F == L(:L)*
+   T == FN|IP|PI|II|EI|MI|TI|FI|PS|IS|FS|IA|IN
+   P == paradigma:V[:S]<lf>(T:F<lf>)*<lf>
+   A == abundante:V:L<lf>
+   B == [[P(V0*]|[A]]*
+
+   O banco pode conter, em qualquer posição, linhas começadas com o caracter "#" ou linhas em branco, que são desprezadas.
+
+   Em termos semânticos, os símbolos da gramática representam:
+
+   S String no nula
+   V Verbo
+   L Lista de strings
+   F Flexão num tempo ou modo
+   T Nome de tempo ou modo
+   P Paradigma
+   A Particípio abundante
+   B Banco
+
+   O termo <lf>  uma quebra de linha. A lista de verbos que segue um dado paradigma são os verbos que se conjugam conforme aquele paradigma. A string eventualmente dada como último componente na linha P é a terminação que heurísticamente será utilizada para decidir quando usar aquele paradigma (no caso de verbos que não especificam um paradigma).
+
+ARQUIVOS
+   /usr/local/lib/verbos - banco de verbos.
+   $HOME/.conjugue-novos - arquivo para apendar verbos que no constam do banco.
+
+BUGS
+   O arquivo no qual vão sendo apendados verbos novos não é lido pelo conjugue na inicialização.
+
+VER TAMBÉM
+   ispell(1),
+

@@ -1,0 +1,2 @@
+Rodando (dica do Raimundo e seus colaboradores)  ./unmunch pt_BR.dic pt_BR.aff | sort -u > listaCompleta.txt  obtemos uma lista completa de todas as palavras do portugues.
+

@@ -1,0 +1,7 @@
+analogia:
+Baseia-se na experiência de casos anteriores, dos quais há verdades conhecidas. Se o caso que está sendo analisado assemelha-se ao(s) caso(s) anterior(es), então supõe-se, sem certeza absoluta, que as mesmas verdades são verdadeiras também para esse caso.
+– Caso anterior: João ingeriu bebida alcoólica em demasia. João teve amnésia.
+– Caso analisado: Maria ingeriu bebida alcoólica em demasia.
+– Inferência por analogia: Maria teve amnésia.
+
+

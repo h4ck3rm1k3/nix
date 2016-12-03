@@ -1,0 +1,7 @@
+descoberta de conhecimento em textos (KDT). (Knowledge Discovery from Text- KDT).
+Text Mining ou Text Data Mining
+Recuperação de Conhecimento (Knowledge Retrieval)
+A recuperação de informação (RI) encontra documentos ou textos onde informações relevantes possam estar.
+A Extração de Informação (EI) encontra informações específicas dentro dos textos.
+A descoberta por Análise de Conteúdo investiga lingüisticamente os textos e apresenta ao usuário informações sobre o seu conteúdo. Entretanto, a diferença para a descoberta por análise lingüística é que, na análise de conteúdo, há maior esforço no tratamento semântico dos textos, passando o limite léxico-sintático.
+

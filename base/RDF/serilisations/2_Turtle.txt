@@ -1,0 +1,170 @@
+Turtle (Terse RDF Triple Language) is a format for expressing data in the Resource Description Framework (RDF) data model.
+
+Filename extension: .ttl
+Internet media type: text/turtle
+Developed by: Dave Beckett
+Extended from: N-Triples
+Specification: http://www.w3.org/TR/turtle/
+Character encoding: UTF-8
+
+Characters only in the range U+0000 to U+10FFFF inclusive are allowed. 
+Escape sequence
+'\u' hex hex hex hex
+'\U' hex hex hex hex hex hex hex hex
+'\t' 	U+0009
+'\b' 	U+0008
+'\n' 	U+000A
+'\r' 	U+000D
+'\f' 	U+000C
+'\"' 	U+0022
+'\'' 	U+0027
+'\\' 	U+005C
+reserved character escape sequences consist of a '\' followed by one of ~.-!$&'()*+,;=/?#@%_ (apenas em nomes locais)
+
+ToASCII takes a sequence of Unicode and transforms it into a sequence in the ASCII range (0..7F).
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+@base <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rel: <http://www.perceive.net/schemas/relationship/> .
+
+<#green-goblin>
+    rel:enemyOf <#spiderman> ;
+    a foaf:Person ;    # in the context of the Marvel universe
+    foaf:name "Green Goblin" .
+
+<#spiderman>
+    rel:enemyOf <#green-goblin> ;
+    a foaf:Person ;
+    foaf:name "Spiderman", "Человек-паук"@ru .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+# A triple with all absolute IRIs
+<http://one.example/subject1> <http://one.example/predicate1> <http://one.example/object1> .
+
+@base <http://one.example/> .
+<subject2> <predicate2> <object2> .     # relative IRIs, e.g. http://one.example/subject2
+
+BASE <http://one.example/>
+<subject2> <predicate2> <object2> .     # relative IRIs, e.g. http://one.example/subject2
+
+@prefix p: <http://two.example/> .
+p:subject3 p:predicate3 p:object3 .     # prefixed name, e.g. http://two.example/subject3
+
+PREFIX p: <http://two.example/>
+p:subject3 p:predicate3 p:object3 .     # prefixed name, e.g. http://two.example/subject3
+
+@prefix p: <path/> .                    # prefix p: now stands for http://one.example/path/
+p:subject4 p:predicate4 p:object4 .     # prefixed name, e.g. http://one.example/path/subject4
+
+@prefix : <http://another.example/> .    # empty prefix
+:subject5 :predicate5 :object5 .        # prefixed name, e.g. http://another.example/subject5
+
+:subject6 a :subject7 .                 # same as :subject6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> :subject7 .
+
+<http://伝言.example/?user=أكرم&amp;channel=R%26D> a :subject8 . # a multi-script subject IRI .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix show: <http://example.org/vocab/show/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+show:218 rdfs:label "That Seventies Show"^^xsd:string .            # literal with XML Schema string datatype
+show:218 rdfs:label "That Seventies Show"^^<http://www.w3.org/2001/XMLSchema#string> . # same as above
+show:218 rdfs:label "That Seventies Show" .                                            # same again
+show:218 show:localName "That Seventies Show"@en .                 # literal with a language tag
+show:218 show:localName 'Cette Série des Années Soixante-dix'@fr . # literal delimited by single quote
+show:218 show:localName "Cette Série des Années Septante"@fr-be .  # literal with a region subtag
+show:218 show:blurb '''This is a multi-line                        # literal with embedded new lines and quotes
+literal with many quotes (""""")
+and up to two sequential apostrophes ('').''' .
+'''The librarian said, "Perhaps you would enjoy 'War and Peace'."'''
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+"-5"^^xsd:integer
+Integers match the regular expression "[+-]?[0-9]+".
+
+"-5.0"^^xsd:decimal
+Decimals match the regular expression "[+-]?[0-9]*\.[0-9]+".
+
+"4.2E9"^^xsd:double
+The exponent matches the regular expression "[+-]?[0-9]+" and the mantissa one of these regular expressions: "[+-]?[0-9]+\.[0-9]+", "[+-]?\.[0-9]+" or "[+-]?[0-9]".
+
+@prefix : <http://example.org/stats> .
+<http://somecountry.example/census2007> :isLandlocked false .           # xsd:boolean
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+# Someone knows someone else, who has the name "Bob".
+[] foaf:knows [ foaf:name "Bob" ] .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+[ foaf:name "Alice" ] foaf:knows [
+    foaf:name "Bob" ;
+    foaf:knows [ foaf:name "Eve" ] ;
+    foaf:mbox <bob@example.com> ] .
+				
+Corresponding simple triples:
+
+_:a <http://xmlns.com/foaf/0.1/name> "Alice" .
+_:a <http://xmlns.com/foaf/0.1/knows> _:b .
+_:b <http://xmlns.com/foaf/0.1/name> "Bob" .
+_:b <http://xmlns.com/foaf/0.1/knows> _:c .
+_:c <http://xmlns.com/foaf/0.1/name> "Eve" .
+_:b <http://xmlns.com/foaf/0.1/mbox> <bob@example.com> .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+Exemplo em Turtle:
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ex: <http://example.org/stuff/1.0/> .
+ 
+ <http://www.w3.org/TR/rdf-syntax-grammar>
+   dc:title "RDF/XML Syntax Specification (Revised)" ;
+   ex:editor [
+     ex:fullname "Dave Beckett";
+     ex:homePage <http://purl.org/net/dajobe/>
+   ] .
+
+
+Exemplo em N-Triples:
+<http://www.w3.org/TR/rdf-syntax-grammar> <http://purl.org/dc/elements/1.1/title> "RDF/XML Syntax Specification (Revised)" .
+<http://www.w3.org/TR/rdf-syntax-grammar> <http://example.org/stuff/1.0/editor> _:bnode .
+_:bnode <http://example.org/stuff/1.0/fullname> "Dave Beckett" .
+_:bnode <http://example.org/stuff/1.0/homePage> <http://purl.org/net/dajobe/> .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+Turtle can be easily embedded in HTML this way.
+<script type="text/turtle">
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+
+<http://books.example.com/works/45U8QJGZSQKDH8N> a frbr:Work ;
+     dc:creator "Wil Wheaton"@en ;
+     dc:title "Just a Geek"@en ;
+     frbr:realization <http://books.example.com/products/9780596007683.BOOK>,
+         <http://books.example.com/products/9780596802189.EBOOK> .
+
+<http://books.example.com/products/9780596007683.BOOK> a frbr:Expression ;
+     dc:type <http://books.example.com/product-types/BOOK> .
+
+<http://books.example.com/products/9780596802189.EBOOK> a frbr:Expression ;
+     dc:type <http://books.example.com/product-types/EBOOK> .
+</script>
+
+A Turtle document parsed from an HTML DOM will be a stream of character data rather than a stream of UTF-8 encoded bytes. No decoding is necessary if the HTML document has already been parsed into DOM. Each script data block is considered to be it's own Turtle document. @prefix and @base declarations in a Turtle data bloc are scoped to that data block and do not effect other data blocks. The HTML lang attribute or XHTML xml:lang attribute have no effect on the parsing of the data blocks. 
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+

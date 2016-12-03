@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>validar texto</title>
+<style>
+@font-face {
+  font-family: "UbuntuMono";
+  src: url("UbuntuMono-R.ttf") format("truetype");
+}
+body {
+  font-family: "UbuntuMono";
+  color: #3C3C3C;
+  background-color: #F0D4B0;
+  font-size: 13pt;
+  text-align: justify;
+}
+
+a, h2 a:hover, #logo a:hover {
+    color: rgb(35, 97, 161);
+}
+
+.container {
+   margin: auto;
+   background-color: #F8F8F8;
+   border: 1px solid black;
+   padding: 5px;
+   text-align: justify;
+   overflow-y: auto;
+   overflow-x: auto;
+}
+</style>
+
+<script>
+function validar_text(){
+  var conteudo = document.getElementById("texto").innerHTML;
+  
+  conteudo = conteudo.replace(/(nome)/gi, "<span style=\"background:#FFFF00;\">$1</span>");
+  document.getElementById("texto").innerHTML = conteudo;
+  document.getElementById("texto").focus();
+}
+
+if (window.addEventListener) {              
+  window.addEventListener("resize", browserResize);
+} else if (window.attachEvent) {                 
+  window.attachEvent("onresize", browserResize);
+}
+
+function browserResize() {
+  document.getElementById("texto").style.width = (window.innerWidth - 40).toString() + "px";
+  document.getElementById("texto").style.height = (window.innerHeight - 30).toString() + "px";
+  document.getElementById("texto").focus();
+}
+
+function red() {
+  document.getElementById("editar").style.backgroundColor= "#FF5555";
+}
+
+function green() {
+  document.getElementById("editar").style.backgroundColor= "#55FF55";
+}
+
+
+</script>
+
+</head>
+<body style="background:#c0c0c0" onload="browserResize()">
+<div class="container" contenteditable="" id="texto" tabindex="0" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="SOFT">
+</div>
+
+<div id="editar" style="position:fixed; bottom:13px; right: 30px; z-index:2; padding:10px; background:#FF5555" onClick="validar_text()" onmousedown="green()" onmouseup="red()"><p>Validar</p></div>
+
+</body>
+</html>
+

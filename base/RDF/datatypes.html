@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+
+A list of the RDF-compatible XSD types, with short descriptions
+<table class="simple">
+      <caption>A list of the RDF-compatible XSD types, with short descriptions"</caption>
+    <tbody><tr><th></th><th>Datatype</th><th>Value space (informative)</th></tr>
+
+    <tr><th rowspan="4">Core types</th><td><a href="http://www.w3.org/TR/xmlschema11-2/#string"><code>xsd:string</code></a></td><td>Character strings (but not all Unicode character strings)</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#boolean"><code>xsd:boolean</code></a></td><td>true, false</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#decimal"><code>xsd:decimal</code></a></td><td>Arbitrary-precision decimal numbers</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#integer"><code>xsd:integer</code></a></td><td>Arbitrary-size integer numbers</td></tr>
+
+    <tr><th rowspan="2">IEEE floating-point<br>numbers</th>
+        <td><a href="http://www.w3.org/TR/xmlschema11-2/#double"><code>xsd:double</code></a></td><td>64-bit floating point numbers incl. ±Inf, ±0, NaN</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#float"><code>xsd:float</code></a></td><td>32-bit floating point numbers incl. ±Inf, ±0, NaN</td></tr>
+
+    <tr><th rowspan="4">Time and date</th>
+        <td><a href="http://www.w3.org/TR/xmlschema11-2/#date"><code>xsd:date</code></a></td><td>Dates (yyyy-mm-dd) with or without timezone</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#time"><code>xsd:time</code></a></td><td>Times (hh:mm:ss.sss…) with or without timezone</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#dateTime"><code>xsd:dateTime</code></a></td><td>Date and time with or without timezone</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#dateTimeStamp"><code>xsd:dateTimeStamp</code></a></td><td>Date and time with required timezone</td></tr>
+
+    <tr><th rowspan="8">Recurring and<br>partial dates</th>
+        <td><a href="http://www.w3.org/TR/xmlschema11-2/#gYear"><code>xsd:gYear</code></a></td><td>Gregorian calendar year</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#gMonth"><code>xsd:gMonth</code></a></td><td>Gregorian calendar month</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#gDay"><code>xsd:gDay</code></a></td><td>Gregorian calendar day of the month</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#gYearMonth"><code>xsd:gYearMonth</code></a></td><td>Gregorian calendar year and month</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#gMonthDay"><code>xsd:gMonthDay</code></a></td><td>Gregorian calendar month and day</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#duration"><code>xsd:duration</code></a></td><td>Duration of time</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#yearMonthDuration"><code>xsd:yearMonthDuration</code></a></td><td>Duration of time (months and years only)</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration"><code>xsd:dayTimeDuration</code></a></td><td>Duration of time (days, hours, minutes, seconds only)</td></tr>
+
+    <tr><th rowspan="12">Limited-range<br>integer numbers</th>
+        <td><a href="http://www.w3.org/TR/xmlschema11-2/#byte"><code>xsd:byte</code></a></td><td>-128…+127 (8 bit)</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#short"><code>xsd:short</code></a></td><td>-32768…+32767 (16 bit)</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#int"><code>xsd:int</code></a></td><td>-2147483648…+2147483647 (32 bit)</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#long"><code>xsd:long</code></a></td><td>-9223372036854775808…+9223372036854775807 (64 bit)</td></tr>
+
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#unsignedByte"><code>xsd:unsignedByte</code></a></td><td>0…255 (8 bit)</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#unsignedShort"><code>xsd:unsignedShort</code></a></td><td>0…65535 (16 bit)</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#unsignedInt"><code>xsd:unsignedInt</code></a></td><td>0…4294967295 (32 bit)</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#unsignedLong"><code>xsd:unsignedLong</code></a></td><td>0…18446744073709551615 (64 bit)</td></tr>
+
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#positiveInteger"><code>xsd:positiveInteger</code></a></td><td>Integer numbers &gt;0</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger"><code>xsd:nonNegativeInteger</code></a></td><td>Integer numbers ≥0</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#negativeInteger"><code>xsd:negativeInteger</code></a></td><td>Integer numbers &lt;0</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#nonPositiveInteger"><code>xsd:nonPositiveInteger</code></a></td><td>Integer numbers ≤0</td></tr>
+
+    <tr><th rowspan="2">Encoded binary data</th>
+        <td><a href="http://www.w3.org/TR/xmlschema11-2/#hexBinary"><code>xsd:hexBinary</code></a></td><td>Hex-encoded binary data</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#base64Binary"><code>xsd:base64Binary</code></a></td><td>Base64-encoded binary data</td></tr>
+
+    <tr><th rowspan="7">Miscellaneous<br>XSD types</th>
+        <td><a href="http://www.w3.org/TR/xmlschema11-2/#anyURI"><code>xsd:anyURI</code></a></td><td>Absolute or relative URIs and IRIs</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#language"><code>xsd:language</code></a></td><td>Language tags per [<cite><a class="bibref" href="#bib-BCP47">BCP47</a></cite>]</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#normalizedString"><code>xsd:normalizedString</code></a></td><td>Whitespace-normalized strings</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#token"><code>xsd:token</code></a></td><td>Tokenized strings</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#NMTOKEN"><code>xsd:NMTOKEN</code></a></td><td>XML NMTOKENs</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#Name"><code>xsd:Name</code></a></td><td>XML Names</td></tr>
+    <tr><td><a href="http://www.w3.org/TR/xmlschema11-2/#NCName"><code>xsd:NCName</code></a></td><td>XML NCNames</td></tr>
+    </tbody></table>
+

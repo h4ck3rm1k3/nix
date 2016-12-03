@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>validar1</title>
+<style>
+@font-face {
+  font-family: "UbuntuMono";
+  src: url("UbuntuMono-R.ttf") format("truetype");
+}
+body {
+  font-family: "UbuntuMono";
+  color: #3C3C3C;
+  font-size: 13pt;
+  text-align: justify;
+}
+
+a, h2 a:hover, #logo a:hover {
+    color: rgb(35, 97, 161);
+}
+</style>
+
+<script>
+function validar_func(){
+  var conteudo = (document.getElementById("codigo_fonte_id").contentWindow || document.getElementById("codigo_fonte_id").contentDocument);
+  
+  if (conteudo.document) {
+    conteudo = conteudo.document.body.innerHTML;
+  }
+  else {
+    alert("Não funcionou.");
+    return;
+  }
+  
+  conteudo = conteudo.replace(/(nome)/gi, "<span style=\"background:#FFFF00;\">$1</span>");
+  document.getElementById("codigo_fonte_id").contentWindow.document.body.innerHTML = conteudo;
+  
+  altura = document.getElementById("codigo_fonte_id").contentWindow.document.body.clientHeight + 150;
+  document.getElementById("codigo_fonte_id").style.height = altura.toString() + "px";
+}
+
+function validar_link(ref){
+  document.getElementById("codigo_fonte_id").setAttribute("src", ref);
+}
+
+function validar_url() {
+  document.getElementById("codigo_fonte_id").setAttribute("src", window.document.getElementById("entrada").value);
+}
+</script>
+
+</head>
+<body>
+<p>Digite um URL: <input type="text" id="entrada" style="width:50%; line-height:14pt" value="texto1.html" /><button type="button" onclick="validar_url()" style="line-height:14pt">validar</button></p>
+
+<p id="saida0"><a href="texto2.html" onclick="validar_link(href); return false;">Validar texto2.html</a></p>
+
+<iframe id="codigo_fonte_id" src="" onload="validar_func()" style="height:100%;width:100%;" frameborder="0"></iframe>
+
+</body>
+</html>
+

@@ -1,0 +1,1 @@
+tagging ou etiquetagem morfosintática: classifica as palavras (verbo, substantivo, etc).

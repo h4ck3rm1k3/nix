@@ -1,0 +1,40 @@
+dedução:  Se X é verdade e se X sendo verdade implica que Y é verdade, então Y é verdade
+– Premissa 1: Todo homem é mortal
+– Premissa 2: João é homem
+– Conclusão: João é mortal
+
+Aluno gosta de inteligência artificial.
+João é aluno.
+João gosta de inteligência artificial.
+
+Todos os feijões deste saco são brancos.
+Estes feijões provêm deste saco.
+Estes feijões são brancos.
+
+Homem é mamífero
+Rex é Homem
+Rex é mamífero
+
+A é B
+C é A
+C é B
+
+a dedução garante a verdade da conclusão se as premissas forem verdadeiras.
+
+| ?- consult(user).
+mortal(X):- homem(X).  % premissa 1: Todo homem é mortal. 
+homem(socrates).       % premissa 2: Socrates é um homem.
+Crtl+D
+| ?- mortal(socrates). % pergunta:   Socrates é mortal?
+yes                    % inferência: Socrates é mortal.
+
+
+Premissa 1:Se Lula nasceu em Caetés, nasceu em Pernambuco.
+Premissa 2:Lula nasceu em Caetés.
+Conclusão:Logo, Lula nasceu em Pernambuco.
+
+
+sul_americano(X):- brasileiro(X). % Todo brasileiro é sul_americano.
+brasileiro(X):- paulista(X).      % Todo paulista é brasileiro.
+Logo, todo paulista é sul-americano. (Conclusão)
+

@@ -1,0 +1,7 @@
+http://pt.wiktionary.org/
+
+Onto.PT and other resources developed in the scope of this research are available
+from the project’s website, at http://ontopt.dei.uc.pt
+
+The web interface for Princeton WordNet, developed by its authors and available from
+http://wordnetweb.princeton.edu/perl/webwn

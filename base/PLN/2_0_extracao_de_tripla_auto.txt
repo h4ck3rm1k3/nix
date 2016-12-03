@@ -1,0 +1,8 @@
+baixar da web documentos que contenham palavras-sementes.
+extrair as frases com as palavras sementes.
+extrair triplas.
+mostrar triplas ao especialista humano.
+selecionar automaticamente novas palavras-sementes.
+
+extração de triplas usa relações do tipo 'is-a', 'part-of', 'owned-by', 'produced-by', etc.
+

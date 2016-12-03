@@ -1,0 +1,91 @@
+https://www.w3.org/wiki/SparqlEndpoints
+
+http://www.semantic-systems-biology.org/biogateway/endpoint
+
+http://babelnet.org/sparql
+is a multilingual lexicalized semantic network and ontology.
+
+Public SPARQL endpoints
+http://esw.w3.org/topic/SparqlEndpoints
+
+"Neurocommons Knowledge Base" created by Science Commons
+Wide range of data: biomedical publications, molecular biology, neuroscience, pharmacology, clinical trials of new drugs, and more
+http://hcls.deri.org/sparql
+
+http://sparql.org/sparql.html ou http://demo.openlinksw.com/sparql (Make sure to choose "Retrieve remote RDF data for all missing source graphs")
+
+BBC Programmes and Music http://bbc.openlinksw.com/sparql/
+Bio2RDF http://www.freebase.com/view/user/bio2rdf/public/sparql
+US Government ”data.gov” http://semantic.data.gov/sparql
+UK Government ”data.gov.uk” http://data.gov.uk/sparql
+DBLP Bibliography D atabase http://www4.wiwiss.fu-berlin.de/dblp/sparql
+DrugBank http://www4.wiwiss.fu-berlin.de/drugbank/sparql
+
+FlyAtlas http://openflydata.org/query/flyatlas_20080916
+Linked M ovie D ata B ase http://data.linkedmdb.org/sparql
+Musicbrainz from DB Tune http://dbtune.org/musicbrainz/sparql
+STW Thesaurus for Economics http://zbw.eu/beta/sparql
+Space TALIS http://api.talis.com/stores/space/items/tutorial/sparql
+
+testados em 10/03/2016
+
+http://dbpedia.org/sparql
+http://live.dbpedia.org/sparql
+http://uriburner.com/isparql/
+http://sparql.bioontology.org/ (com exemplos)
+http://sparql.uniprot.org/
+http://linkedgeodata.org/sparql
+http://rdf.myexperiment.org/sparql
+http://europeana.ontotext.com/sparql
+http://bio2rdf.org/sparql
+http://sparql.data.southampton.ac.uk
+http://uriburner.com/sparql
+http://lod.openlinksw.com/sparql
+http://linkedopencommerce.com/sparql
+http://data.semanticweb.org/snorql/
+
+http://rdf.farmbio.uu.se/chembl/sparql/
+http://geo.linkeddata.es/sparql
+http://linkedgeodata.org/sparql/
+http://en.openei.org/sparql
+http://linkeddata.uriburner.com/sparql
+
+4store
+
+http://acm.rkbexplorer.com/sparql/
+http://budapest.rkbexplorer.com/sparql/
+http://citeseer.rkbexplorer.com/sparql/
+http://cordis.rkbexplorer.com/sparql/
+http://courseware.rkbexplorer.com/sparql/
+http://curriculum.rkbexplorer.com/sparql/
+http://darmstadt.rkbexplorer.com/sparql/
+http://dblp.rkbexplorer.com/sparql/
+http://deepblue.rkbexplorer.com/sparql/
+http://deploy.rkbexplorer.com/sparql/
+http://dotac.rkbexplorer.com/sparql/
+http://eprints.rkbexplorer.com/sparql/
+http://era.rkbexplorer.com/sparql/
+http://eurecom.rkbexplorer.com/sparql/
+http://ft.rkbexplorer.com/sparql/
+http://ibm.rkbexplorer.com/sparql/
+http://ieee.rkbexplorer.com/sparql/
+http://irit.rkbexplorer.com/sparql/
+http://jisc.rkbexplorer.com/sparql/
+http://kisti.rkbexplorer.com/sparql/
+http://laas.rkbexplorer.com/sparql/
+http://newcastle.rkbexplorer.com/sparql/
+http://nsf.rkbexplorer.com/sparql/
+http://oai.rkbexplorer.com/sparql/
+http://os.rkbexplorer.com/sparql/
+http://pisa.rkbexplorer.com/sparql/
+http://rae2001.rkbexplorer.com/sparql/
+http://resex.rkbexplorer.com/sparql/
+http://risks.rkbexplorer.com/sparql/
+http://roma.rkbexplorer.com/sparql/
+http://southampton.rkbexplorer.com/sparql/
+http://ulm.rkbexplorer.com/sparql/
+http://unlocode.rkbexplorer.com/sparql/
+http://wiki.rkbexplorer.com/sparql/
+http://wordnet.rkbexplorer.com/sparql/
+
+

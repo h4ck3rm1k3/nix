@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language _name="SPARQL" version="1.0" _section="Sources" mimetypes="text/x-sparql">
+
+  <escape-char>\</escape-char>
+
+  <string _name="String" style="String" end-at-line-end="TRUE">
+    <start-regex>"</start-regex>
+    <end-regex>"</end-regex>
+  </string>
+
+  <keyword-list _name="Keywords" style="Keyword" case-sensitive="FALSE">
+    <keyword>BASE</keyword>
+    <keyword>SELECT</keyword>
+    <keyword>ORDER BY</keyword>
+    <keyword>FROM</keyword>
+    <keyword>GRAPH</keyword>
+    <keyword>PREFIX</keyword>
+    <keyword>CONSTRUCT</keyword>
+    <keyword>LIMIT</keyword>
+    <keyword>FROM NAMED</keyword>
+    <keyword>OPTIONAL</keyword>
+    <keyword>DESCRIBE</keyword>
+    <keyword>OFFSET</keyword>
+    <keyword>WHERE</keyword>
+    <keyword>UNION</keyword>
+    <keyword>ASK</keyword>
+    <keyword>DISTINCT</keyword>
+    <keyword>FILTER</keyword>
+    <keyword>REDUCED</keyword>
+    <keyword>a</keyword>
+    <keyword>true</keyword>
+    <keyword>false</keyword>
+  </keyword-list>
+
+  <keyword-list _name="SPARQLFunctions" style="Function" case-sensitive="FALSE">
+    <keyword>STR</keyword>
+    <keyword>isURI</keyword>
+    <keyword>LANG</keyword>
+    <keyword>isIRI</keyword>
+    <keyword>LANGMATCHES</keyword>
+    <keyword>isLITERAL</keyword>
+    <keyword>DATATYPE</keyword>
+    <keyword>REGEX</keyword>
+    <keyword>BOUND</keyword>
+    <keyword>sameTERM</keyword>
+    <keyword>DESC</keyword>
+    <keyword>ASC</keyword>
+  </keyword-list>
+
+  <keyword-list _name="Datatypes" style="Data Type" case-sensitive="TRUE">
+    <keyword>xsd:ID</keyword>
+    <keyword>xsd:IDREF</keyword>
+    <keyword>xsd:NCName</keyword>
+    <keyword>xsd:NMTOKEN</keyword>
+    <keyword>xsd:Name</keyword>
+    <keyword>xsd:anyAtomicType</keyword>
+    <keyword>xsd:anyURI</keyword>
+    <keyword>xsd:base64Binary</keyword>
+    <keyword>xsd:boolean</keyword>
+    <keyword>xsd:byte</keyword>
+    <keyword>xsd:date</keyword>
+    <keyword>xsd:dateTime</keyword>
+    <keyword>xsd:dayTimeDuration</keyword>
+    <keyword>xsd:decimal</keyword>
+    <keyword>xsd:double</keyword>
+    <keyword>xsd:duration</keyword>
+    <keyword>xsd:float</keyword>
+    <keyword>xsd:gDay</keyword>
+    <keyword>xsd:gMonth</keyword>
+    <keyword>xsd:gMonthDay</keyword>
+    <keyword>xsd:gYear</keyword>
+    <keyword>xsd:gYearMonth</keyword>
+    <keyword>xsd:hexBinary</keyword>
+    <keyword>xsd:int</keyword>
+    <keyword>xsd:integer</keyword>
+    <keyword>xsd:language</keyword>
+    <keyword>xsd:long</keyword>
+    <keyword>xsd:negativeInteger</keyword>
+    <keyword>xsd:nonNegativeInteger</keyword>
+    <keyword>xsd:nonPositiveInteger</keyword>
+    <keyword>xsd:normalizedString</keyword>
+    <keyword>xsd:precisionDecimal</keyword>
+    <keyword>xsd:positiveInteger</keyword>
+    <keyword>xsd:short</keyword>
+    <keyword>xsd:string</keyword>
+    <keyword>xsd:time</keyword>
+    <keyword>xsd:token</keyword>
+    <keyword>xsd:unsignedByte</keyword>
+    <keyword>xsd:unsignedInt</keyword>
+    <keyword>xsd:unsignedLong</keyword>
+    <keyword>xsd:unsignedShort</keyword>
+    <keyword>xsd:yearMonthDuration</keyword>
+  </keyword-list>
+
+  <keyword-list _name="Classes" style="Data Type" case-sensitive="TRUE">
+    <keyword>rdf:Property</keyword>
+    <keyword>rdf:Statement</keyword>
+    <keyword>rdf:Bag</keyword>
+    <keyword>rdf:Seq</keyword>
+    <keyword>rdf:Alt</keyword>
+    <keyword>rdf:List</keyword>
+    <keyword>rdf:XMLLiteral</keyword>
+    <keyword>rdfs:Resource</keyword>
+    <keyword>rdfs:Class</keyword>
+    <keyword>rdfs:Literal</keyword>
+    <keyword>rdfs:Container</keyword>
+    <keyword>rdfs:ContainerMembershipProperty</keyword>
+    <keyword>rdfs:Datatype</keyword>
+    <keyword>owl:Class</keyword>
+    <keyword>owl:Thing</keyword>
+    <keyword>owl:Nothing</keyword>
+    <keyword>owl:AllDifferent</keyword>
+    <keyword>owl:Restriction</keyword>
+    <keyword>owl:ObjectProperty</keyword>
+    <keyword>owl:DatatypeProperty</keyword>
+    <keyword>owl:TransitiveProperty</keyword>
+    <keyword>owl:SymmetricProperty</keyword>
+    <keyword>owl:FunctionalProperty</keyword>
+    <keyword>owl:InverseFunctionalProperty</keyword>
+    <keyword>owl:AnnotationProperty</keyword>
+    <keyword>owl:Ontology</keyword>
+    <keyword>owl:OntologyProperty</keyword>
+    <keyword>owl:DeprecatedClass</keyword>
+    <keyword>owl:DeprecatedProperty</keyword>
+    <keyword>owl:DataRange</keyword>
+  </keyword-list>
+
+  <keyword-list _name="Properties" style="Function" case-sensitive="TRUE">
+    <keyword>rdf:type</keyword>
+    <keyword>rdf:subject</keyword>
+    <keyword>rdf:predicate</keyword>
+    <keyword>rdf:object</keyword>
+    <keyword>rdf:value</keyword>
+    <keyword>rdf:first</keyword>
+    <keyword>rdf:rest</keyword>
+    <keyword>rdfs:subClassOf</keyword>
+    <keyword>rdfs:subPropertyOf</keyword>
+    <keyword>rdfs:comment</keyword>
+    <keyword>rdfs:label</keyword>
+    <keyword>rdfs:domain</keyword>
+    <keyword>rdfs:range</keyword>
+    <keyword>rdfs:seeAlso</keyword>
+    <keyword>rdfs:isDefinedBy</keyword>
+    <keyword>rdfs:member</keyword>
+    <keyword>owl:equivalentClass</keyword>
+    <keyword>owl:disjointWith</keyword>
+    <keyword>owl:equivalentProperty</keyword>
+    <keyword>owl:sameAs</keyword>
+    <keyword>owl:differentFrom</keyword>
+    <keyword>owl:distinctMembers</keyword>
+    <keyword>owl:unionOf</keyword>
+    <keyword>owl:intersectionOf</keyword>
+    <keyword>owl:complementOf</keyword>
+    <keyword>owl:oneOf</keyword>
+    <keyword>owl:onProperty</keyword>
+    <keyword>owl:allValuesFrom</keyword>
+    <keyword>owl:hasValue</keyword>
+    <keyword>owl:someValuesFrom</keyword>
+    <keyword>owl:minCardinality</keyword>
+    <keyword>owl:maxCardinality</keyword>
+    <keyword>owl:cardinality</keyword>
+    <keyword>owl:inverseOf</keyword>
+    <keyword>owl:imports</keyword>
+    <keyword>owl:versionInfo</keyword>
+    <keyword>owl:priorVersion</keyword>
+    <keyword>owl:backwardCompatibleWith</keyword>
+    <keyword>owl:incompatibleWith</keyword>
+  </keyword-list>
+
+  <keyword-list _name="Individuals" style="String" case-sensitive="TRUE">
+    <keyword>rdf:nil</keyword>
+  </keyword-list>
+
+  <pattern-item _name="URI" style="String">
+    <regex>&lt;[:/a-zA-Z_~0-9\\.\\#-]+&gt;</regex>
+  </pattern-item>
+
+  <pattern-item _name="special-chars" style="Specials">
+    <regex>[\,\;\.\{\}\[\]\(\)\@]</regex>
+  </pattern-item>
+
+  <pattern-item _name="var" style="Preprocessor">
+    <regex>[\?\$][a-zA-Z_0-9]+</regex>
+  </pattern-item>
+
+  <pattern-item _name="Decimal" style="Decimal">
+    <regex>\b[0-9]+\b</regex>
+  </pattern-item>
+
+  <pattern-item _name="Floating Point Number" style="Floating Point">
+    <regex>(\b[0-9]+(\.[0-9]+)?|\.[0-9]+)([Ee][\+-]?[0-9]+)?\b</regex>
+  </pattern-item>
+
+  <pattern-item _name="Hex Number" style="Base-N Integer">
+    <regex>\b0x[0-9a-fA-F]+\b</regex>
+  </pattern-item>
+
+  <line-comment _name="Line Comment" style="Comment">
+    <start-regex>#[^&gt;]</start-regex>
+  </line-comment>
+
+</language>

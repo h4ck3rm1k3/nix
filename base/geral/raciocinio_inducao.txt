@@ -1,0 +1,19 @@
+Indução: Pressumo que um acontecimento voltará a acontecer.
+Exemplo: Depois que eu nasci o sol sempre nasceu no horizonte, portanto amanhã o sol nascerá novamente.
+
+indução: Para um conjunto de objetos, X={a,b,c,d,...}, se a propriedade P é verdade para a, e se P é verdade para b, e se P é verdade para c,... então P é verdade para todo X
+– Caso 1:• Joseana é professora • Joseana tem um ótimo salário
+
+– Caso 2:• Eustáquio é professor • Eustáquio tem um ótimo salário
+
+– Caso 3:• Elmar é professor • Elmar tem um ótimo salário
+
+– Lei geral: Professor tem um ótimo salário
+
+Todos os alunos que foram entrevistados gostam de Inteligência Artifical.
+Todo aluno gosta de inteligência artificial.
+
+Estes feijões provêm deste saco.
+Estes feijões são brancos.
+Todos os feijões deste saco são brancos.
+

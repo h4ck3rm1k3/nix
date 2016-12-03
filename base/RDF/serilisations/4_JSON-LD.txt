@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "cert": "http://www.w3.org/ns/auth/cert#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "@coerce": {
+      "xsd:int": "cert:exponent",
+      "@iri": [
+        "cert:key",
+        "foaf:knows"
+      ],
+      "xsd:hexBinary": "cert:modulus"
+    }
+  },
+  "@subject": "#me",
+  "@type": "foaf:Person",
+  "cert:key": {
+    "@type": "cert:RSAPublicKey",
+    "cert:exponent": 65537,
+    "cert:modulus": "cb24ed85d64d794b69c70...",
+    "rdfs:label": "made on 23 November 2011 on my laptop"
+  },
+  "foaf:knows": "https://example.edu/p/Alois#MSc",
+  "foaf:name": "Bob"
+}
+
+
+Spec: http://json-ld.org/spec/latest/json-ld-syntax/
+
+Libs: JavaScript: https://github.com/digitalbazaar/jsonld.js
+
+
+JSON-LD Filename extension   .jsonld
+Internet media type          application/ld+json
+Type of format               Semantic Web (https://en.wikipedia.org/wiki/Semantic_Web)
+Container for                Linked Data (https://en.wikipedia.org/wiki/Linked_Data)
+Extended from                JSON
+Standard                     JSON-LD 1.0 / JSON-LD 1.0 API (http://www.w3.org/TR/json-ld/) / (http://www.w3.org/TR/json-ld-api/)
+
+Jena Fuseki entende este formato.
+
+
+{
+  "@context": {
+    "name": "http://xmlns.com/foaf/0.1/name",
+    "homepage": {
+      "@id": "http://xmlns.com/foaf/0.1/workplaceHomepage",
+      "@type": "@id"
+    },
+    "Person": "http://xmlns.com/foaf/0.1/Person"
+  },
+  "@id": "http://me.example.com",
+  "@type": "Person",
+  "name": "John Smith",
+  "homepage": "http://www.example.com/"
+}
+
