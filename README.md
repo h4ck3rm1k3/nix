@@ -18,9 +18,9 @@ Validar sequência de palavras usando [base de conhecimento].
 
 Exemplo de base de conhecimento:
 
-    &lt;<http://dbpedia.org/resource/Aedes_aegypti>&gt; &lt;<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>&gt; &lt;<http://dbpedia.org/ontology/Insect>&gt; .
-    &lt;<http://dbpedia.org/resource/Aedes_aegypti>&gt; &lt;<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>&gt; &lt;<http://dbpedia.org/ontology/Animal>&gt; .
-    &lt;<http://dbpedia.org/ontology/Insect>&gt; &lt;<http://www.w3.org/2000/01/rdf-schema#label>&gt; "inseto"@pt .
+    <http://dbpedia.org/resource/Aedes_aegypti> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Insect> .
+    <http://dbpedia.org/resource/Aedes_aegypti> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Animal> .
+    <http://dbpedia.org/ontology/Insect> <http://www.w3.org/2000/01/rdf-schema#label> "inseto"@pt .
 
 
 Exemplos de texto validado:
