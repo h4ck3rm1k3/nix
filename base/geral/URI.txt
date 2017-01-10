@@ -1,5 +1,0 @@
-https://tools.ietf.org/html/rfc3986
-RFC 3986 seção 2.2 Caracteres Reservados (Janeiro de 2005)
-! * ' ( ) ; : @ & = + $ , / ? # [ ]
-
-URLs can only be sent over the Internet using the ASCII character-set.

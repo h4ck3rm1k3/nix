@@ -1,9 +1,7 @@
-Turtle (Terse RDF Triple Language) is a format for expressing data in the Resource Description Framework (RDF) data model.
+Turtle (Terse RDF Triple Language)  is a subset of the N3.
 
 Filename extension: .ttl
 Internet media type: text/turtle
-Developed by: Dave Beckett
-Extended from: N-Triples
 Specification: http://www.w3.org/TR/turtle/
 Character encoding: UTF-8
 
@@ -167,4 +165,9 @@ Turtle can be easily embedded in HTML this way.
 A Turtle document parsed from an HTML DOM will be a stream of character data rather than a stream of UTF-8 encoded bytes. No decoding is necessary if the HTML document has already been parsed into DOM. Each script data block is considered to be it's own Turtle document. @prefix and @base declarations in a Turtle data bloc are scoped to that data block and do not effect other data blocks. The HTML lang attribute or XHTML xml:lang attribute have no effect on the parsing of the data blocks. 
 
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+the following IRI in the Turtle
+<>
+indicates the 'current document'
+
 

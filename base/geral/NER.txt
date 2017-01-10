@@ -1,0 +1,39 @@
+Named-entity recognition (NER) (also known as entity identification, entity chunking and entity extraction) is a subtask of information extraction
+Named Entity Recognition (NER) labels sequences of words in a text which are the names of things, such as person and company names, or gene and protein names.
+
+Stanford NER is good named entity recognizer for English, particularly for the 3 classes (PERSON, ORGANIZATION, LOCATION)
+http://corenlp.run/
+http://nlp.stanford.edu/software/CRF-NER.shtml#Download
+
+
+ou can run jar -t to get the list of files in the jar file. 
+
+you need to have java on your PATH and the stanford-ner.jar file in your CLASSPATH
+
+on Unix/Linux you should be able to parse the test file in the distribution directory with the command:
+java -mx600m -cp "*:lib/*" edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier classifiers/english.all.3class.distsim.crf.ser.gz \
+-textFile sample.txt 
+
+
+Here's an output option that will print out entities and their class to the first two columns of a tab-separated columns output file:
+java -mx600m -cp "*;lib/*" edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier classifiers/english.all.3class.distsim.crf.ser.gz -outputFormat tabbedEntities -textFile sample.txt > sample.tsv
+Talvez o comando correto seja -cp "*:lib/*"
+
+NERClassifierCombiner class has options for recognizing numeric sequence patterns and time patterns
+
+java -mx1g -cp "*:lib/*" edu.stanford.nlp.ie.NERClassifierCombiner -textFile sample.txt -ner.model classifiers/english.all.3class.distsim.crf.ser.gz,classifiers/english.conll.4class.distsim.crf.ser.gz,classifiers/english.muc.7class.distsim.crf.ser.gz
+
+The one difference you should see from above is that Sunday is now recognized as a DATE. 
+
+
+
+Extensions
+ JavaScript/npm:
+
+    Pranav Herur has written ner-server. https://github.com/PranavHerur/ner-server
+    Nikhil Srivastava has written ner. https://github.com/niksrc/ner
+    Varun Chatterji has written stanford-ner. https://github.com/vchatterji/stanford-ner
+
+
+
+

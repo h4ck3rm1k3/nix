@@ -1,3 +1,24 @@
+JSON-LD Filename extension   .jsonld
+Internet media type          application/ld+json
+Standard                     JSON-LD 1.0 / JSON-LD 1.0 API (http://www.w3.org/TR/json-ld/) / (http://www.w3.org/TR/json-ld-api/)
+Spec: http://json-ld.org/spec/latest/json-ld-syntax/
+
+Jena Fuseki entende este formato.
+
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+<http://dbpedia.org/resource/Pluto> <http://dbpedia.org/ontology/discovered> "1930" .
+<http://dbpedia.org/resource/Pluto> <http://dbpedia.org/ontology/discoverer> <http://dbpedia.org/resource/Clyde_Tombaugh> .
+
+{
+  "@id": "http://dbpedia.org/resource/Pluto",
+     "http://dbpedia.org/ontology/discovered": {"@value": "1930"},
+     "http://dbpedia.org/ontology/discoverer": {"@id": "http://dbpedia.org/resource/Clyde_Tombaugh"}
+}
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
 {
   "@context": {
     "cert": "http://www.w3.org/ns/auth/cert#",
@@ -25,20 +46,6 @@
   "foaf:name": "Bob"
 }
 
-
-Spec: http://json-ld.org/spec/latest/json-ld-syntax/
-
-Libs: JavaScript: https://github.com/digitalbazaar/jsonld.js
-
-
-JSON-LD Filename extension   .jsonld
-Internet media type          application/ld+json
-Type of format               Semantic Web (https://en.wikipedia.org/wiki/Semantic_Web)
-Container for                Linked Data (https://en.wikipedia.org/wiki/Linked_Data)
-Extended from                JSON
-Standard                     JSON-LD 1.0 / JSON-LD 1.0 API (http://www.w3.org/TR/json-ld/) / (http://www.w3.org/TR/json-ld-api/)
-
-Jena Fuseki entende este formato.
 
 
 {

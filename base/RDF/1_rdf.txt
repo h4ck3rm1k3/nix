@@ -1,0 +1,162 @@
+Libs:
+C: http://librdf.org/
+JavaScript: http://code.google.com/p/rdfquery/
+JavaScript: http://code.google.com/p/rdfquery/wiki/Introduction
+JavaScript: http://www.jibbering.com/rdf-parser/
+JavaScript: https://github.com/linkeddata/rdflib.js 
+
+http://www.w3.org/TR/owl-guide/
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+RDF (Resource Description Framework)
+
+A RDF dataset is a collection of RDF graphs.
+A RDF graph is a set of RDF triples.
+A RDF triple is an subject-predicate-object, that can be think as object-attribute-value.
+
+An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+
+Subject is an IRI or a blank node.
+Predicate is an IRI.
+Object is an IRI, a literal or a blank node.
+
+Os elementos RDF são resources (rdfs:Resource), literais (rdfs:Literal) e nodes.
+
+Os objetos do mundo (resources) são rotulados como pertencentes a determinadas classes.
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Sócrates é uma pessoa.
+dbr:Socrates rdf:type dbo:Person .
+
+rdf:type rdfs:label "type"^^xsd:string .
+rdf:type rdfs:comment "The subject is an instance of a class."^^xsd:string .
+rdf:type rdfs:isDefinedBy rdf: .
+rdf:type rdf:type rdf:Property .
+rdf:type rdfs:domain rdfs:Resource .
+rdf:type rdfs:range rdfs:Class .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Uma pessoa é uma classe.
+dbo:Person rdf:type rdfs:Class.
+
+rdfs:Class rdfs:label "Class"^^xsd:string .
+rdfs:Class rdfs:comment "The class of classes."^^xsd:string .
+rdfs:Class rdfs:isDefinedBy rdfs: .
+rdfs:Class rdf:type rdfs:Class .
+rdfs:Class rdfs:subClassOf rdfs:Resource .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Uma pessoa é uma classe.
+dbo:Person rdf:type owl:Class.
+
+owl:Class rdfs:label "Class"^^xsd:string .
+owl:Class rdfs:comment "The class of OWL classes."^^xsd:string .
+owl:Class rdfs:isDefinedBy owl: .
+owl:Class rdf:type rdfs:Class .
+owl:Class rdfs:subClassOf rdfs:Class .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
+
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Como associar uma data a um evento.
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix xsd: <http://www.w3c.org/2001/XMLSchema#> .
+@base <http://dbpedia.org/resource/> .
+<Pluto> dbo:SpaceMission _:ID1 .
+<Pluto> dbo:SpaceMission _:ID2 .
+_:ID1 dbo:spaceShip <New_Horizons> ;
+dbo:visited "2015-07-14"^^xsd:date .
+_:ID2 dbo:spaceShip <USS_Enterprise_(NCC-1701)> ;
+dbo:visited "2245-07-14"^^xsd:date .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+# Container é um grupo aberto
+
+rdf:Bag rdfs:subClassOf rdfs:Container .
+rdf:Bag rdfs:comment "The class of unordered containers."^^xsd:string .
+
+Declaração: "Os autores do livro ISBN:0-201-00023-7 são Alfred, John e Jeffrey".
+<urn:ISBN:0-201-00023-7 dc:creator _:b0 .
+_:b0 rdf:type rdf:Bag .
+_:b0 rdf:_1 "Alfred" .
+_:b0 rdf:_2 "John" .
+_:b0 rdf:_3 "Jeffrey" .
+
+
+rdf:Seq rdfs:subClassOf rdfs:Container .
+rdf:Seq rdfs:comment "The class of ordered containers."^^xsd:string .
+
+Declaração: "Os estudantes do curso csci-2962 em ordem alfabética são Elizabeth, George e John".
+<http://www.cs.vassar.edu/courses/cs240 <http://www.schemas.org/Course/students> _:B1 .
+_:B1 rdf:type rdf:Seq .
+_:B1 rdf:_1 <http://www.cs.vassar.edu/students/er> .
+_:B1 rdf:_2 <http://www.cs.vassar.edu/students/gl> .
+_:B1 rdf:_3 <http://www.cs.vassar.edu/students/js> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ex: <http://example.org/test#> .
+ex:SolarSystem ex:planets [
+rdf:type rdf:Seq ;
+rdf:_1 ex:Mercury ;
+rdf:_2 ex:Venus ;
+rdf:_3 ex:Earth ;
+rdf:_4 ex:Mars ;
+rdf:_5 ex:Jupiter ;
+rdf:_6 ex:Saturn
+] .
+
+
+rdf:Alt rdfs:subClassOf rdfs:Container .
+rdf:Alt rdfs:comment "The class of containers of alternatives."^^xsd:string .
+
+Declaração: "As opções de formato do livro 0201000237 são plain, html ou postscript".
+<urn:ISBN:0-201-00023-7> <http://purl.org/dc/elements/1.1/format> _:B3 .
+_:B3 rdf:type rdf:Alt .
+_:B3 rdf:_1 "text/html" .
+_:B3 rdf:_2 "text/plain" .
+_:B3 rdf:_3 "application/postscript" .
+
+
+RDF collections are used to describe groups that can ONLY contain the specified members (a closed group).
+<http://recshop.fake/cd/Beatles> <http://recshop.fake/cd#artist> _:B7 .
+_:B7 rdf:first <http://recshop.fake/cd/Beatles/George> .
+_:B7 rdf:rest _:B6 .
+_:B6 rdf:first <http://recshop.fake/cd/Beatles/John> .
+_:B6 rdf:rest _:B5 .
+_:B5 rdf:first <http://recshop.fake/cd/Beatles/Paul> .
+_:B5 rdf:rest _:B4 .
+_:B4 rdf:first <http://recshop.fake/cd/Beatles/Ringo> .
+_:B4 rdf:rest rdf:nil .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ex: <http://example.org/test#> .
+ex:SolarSystem ex:planets (
+ex:Mercury ex:Venus ex:Earth ex:Mars ex:Jupiter ex:Saturn
+) .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Reification: define metadata about statements
+Sherlock Holmes supposes that the gardener has killed the butler
+
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ex: <http://example.org/Crimestories#> .
+dbpedia:SherlockHolmes ex:supposes ex:StatementOfSherlock .
+ex:StatementOfSherlock rdf:type rdf:Statement ;
+rdf:subject ex:Gardener ;
+rdf:predicate ex:hasKilled ;
+rdf:object ex:Butler .
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+

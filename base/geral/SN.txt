@@ -1,0 +1,14 @@
+sintagma nominal (SN)
+
+“sujeito”, “predicado” e “objeto direto”. Quando o núcleo for um nome têm-se um SN.
+
+
+SN pode ser definido de maneira muito simples: “é o sintagma que
+pode ser sujeito de alguma oração”. Por exemplo, na seguinte oração:
+(2.4) [Esse professor] é [um neurótico]
+temos que “esse professor” é um SN porque é sujeito da oração (2.4); e “um neurótico” é
+também um SN, porque, mesmo que não seja sujeito em (2.4) pode ser sujeito em outra
+oração, como em (2.5).
+(2.5) [Um neurótico] rabiscou [meus livros]
+
+

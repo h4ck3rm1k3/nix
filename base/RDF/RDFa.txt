@@ -1,14 +1,346 @@
 RDFa (Resource Description Framework in Attributes)
 
-The essence of RDFa is:
-  about – a URI specifying the resource the metadata is about
-  rel and rev – specifying a relationship and reverse-relationship with another resource, respectively
-  src, href and resource – specifying the partner resource
-  property – specifying a property for the content of an element or the partner resource
-  content – optional attribute that overrides the content of the element when using the property attribute
-  datatype – optional attribute that specifies the datatype of text specified for use with the property attribute
-  typeof – optional attribute that specifies the RDF type(s) of the subject or the partner resource (the resource that the metadata is about).
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
+fonte: https://www.w3.org/TR/rdfa-lite/
+
+RDFa Lite 1.1 documen use only five attributes; vocab, typeof, property, resource, and prefix.
+
+if you wanted to talk about People, the vocabulary that you would use would specify terms like name and telephone number.
+<p vocab="http://schema.org/" prefix="ov: http://open.vocab.org/terms/" resource="#manu" typeof="Person">
+   My name is
+   <span property="name">Manu Sporny</span>
+   and you can give me a ring via
+   <span property="telephone">1-800-555-0199</span>.
+   <img property="image" src="http://manu.sporny.org/images/manu.png" />
+   My favorite animal is the <span property="ov:preferredAnimal">Liger</span>.
+</p>
+
+Acima é definido <http://example.org/people#manu>.
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+fonte: https://www.w3.org/TR/rdfa-primer/
+
+<div vocab="http://xmlns.com/foaf/0.1/" typeof="Person"><p>
+  <p>
+    <span property="name">Alice Birpemswick</span>,
+    Email: <a property="mbox" href="mailto:alice@example.com">alice@example.com</a>,
+    Phone: <a property="phone" href="tel:+1-617-555-7332">+1 617.555.7332</a>
+  </p>
+</div>
+
+in the absence of a resource attribute, the typeof attribute on div implicitly sets the subject. That is, the name, email address, and phone number are associated with a new node of type Person. This node has no URL to identify it, so it is called a blank node as shown on the figure: 
+
+_:blanknode1 rdf:type foaf:Person ;
+    foaf:name "Alice Birpemswick" ;
+    foaf::mbox "alice@example.com" ;
+    foaf:phone "+1 617.555.7332" .
+
+
+<div vocab="http://xmlns.com/foaf/0.1/" typeof="Person">
+   <p>
+    <span property="name">Alice Birpemswick</span>,
+    Email: <a property="mbox" href="mailto:alice@example.com">alice@example.com</a>,
+    Phone: <a property="phone" href="tel:+1-617-555-7332">+1 617.555.7332</a>
+  </p>
+   <ul>
+      <li property="knows" typeof="Person"><!-- outro blanknode -->
+        <a property="homepage" href="http://example.com/bob/"><span property="name">Bob</span></a>
+      </li>
+      <li property="knows" typeof="Person">
+        <a property="homepage" href="http://example.com/eve/"><span property="name">Eve</span></a>
+      </li>
+      <li property="knows" typeof="Person">
+        <a property="homepage" href="http://example.com/manu/"><span property="name">Manu</span></a>
+      </li>
+   </ul>
+</div>
+
+FOAF convention: the URL that represents the person Alice is http://example.com/alice#me. It should not be confused with Alice's homepage, http://example.com/alice.
+
+
+<div vocab="http://purl.org/dc/terms/">
+   <div resource="/alice/posts/trouble_with_bob">
+      <h2 property="title">The trouble with Bob</h2>
+      <h3 property="creator" resource="#me">Alice</h3>
+      ...
+   </div>
+</div>
+   ...
+<div class="sidebar" vocab="http://xmlns.com/foaf/0.1/" resource="#me" typeof="Person">
+  <p>
+   <span property="name">Alice Birpemswick</span>,
+     Email: <a property="mbox" href="mailto:alice@example.com">alice@example.com</a>,
+     Phone: <a property="phone" href="tel:+1-617-555-7332">+1 617.555.7332</a>
+  </p>
+  ...
+</div>
+
+The resource attribute appears, in this case, together with property on the same element: in this situation resource indicates the "target" of the relation.
+Combined with property, the resource attribute plays exactly the same role as href.
+
+
+multiple prefix
+<html>
+ <head>
+   ...
+ </head>
+ <body prefix="dc: http://purl.org/dc/terms/ schema: http://schema.org/"><!-- in body because meta UTF-8 must be at first 512 bytes -->
+   <div resource="/alice/posts/trouble_with_bob" typeof="schema:BlogPosting">
+      <h2 property="dc:title">The trouble with Bob</h2>
+      ...
+      <h3 property="dc:creator" resource="#me">Alice</h3>
+      <div property="schema:articleBody">
+        <p>The trouble with Bob is that he takes much better photos than I do:</p>
+      </div>
+     ...
+   </div>
+ </body>
+</html>
+
+
+
+RDFa allows the value of a property attribute to be a list of values
+<html>
+ <head>
+   ...
+ </head>
+ <body prefix="dc: http://purl.org/dc/terms/ schema: http://schema.org/">
+   <div resource="/alice/posts/trouble_with_bob" typeof="schema:BlogPosting">
+      <h2 property="dc:title">The trouble with Bob</h2>
+      ...
+      <h3 property="dc:creator" resource="#me"><span property="schema:creator" resource="#me">Alice</span></h3>
+      <div property="schema:articleBody">
+        <p>The trouble with Bob is that he takes much better photos than I do:</p>
+      </div>
+     ...
+   </div>
+ </body>
+</html>
+
+<html>
+ <head>
+   ...
+ </head>
+ <body prefix="dc: http://purl.org/dc/terms/ schema: http://schema.org/">
+   <div resource="/alice/posts/trouble_with_bob" typeof="schema:BlogPosting">
+      <h2 property="dc:title">The trouble with Bob</h2>
+      ...
+      <h3 property="dc:creator schema:creator" resource="#me">Alice</h3>
+      <div property="schema:articleBody">
+        <p>The trouble with Bob is that he takes much better photos than I do:</p>
+      </div>
+     ...
+   </div>
+ </body>
+</html>
+Similarly to property, typeof also accepts a list of values. For example, typeof="foaf:Person schema:Person"
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+fonte: http://www.w3.org/TR/rdfa-core/
+
+RDFa Core
+
+The aim of RDFa is to allow a single RDF graph to be carried in various types of document markup.
+
+In RDFa, a subject IRI reference is generally indicated using @about and predicates are represented using one of @property, @rel, or @rev. 
+Objects which are IRI references are represented using @resource, @src, or @href, whilst objects that are literals are represented either with @content or the content of the element in question (with an optional datatype expressed using @datatype, and an optional language expressed using a Host Language-defined mechanism such as @xml:lang).
+
+output graph mean all of the triples asserted by a document
+RDFa Processor MUST make available to a consuming application a single RDF graph containing all possible triples generated by using the rules in the Processing Model
+
+about: is a 'subject'.
+content: is a 'literal object'.
+property: is a 'predicate'. Used for expressing relationships between a subject and either a resource object if given or some literal text
+rel: is a 'predicate'. Used for expressing relationships between two resources.
+rev: is a 'predicate'. Used for expressing reverse relationships between two resources.
+resource: is a 'object'. 
+
+<div about="http://dbpedia.org/resource/Albert_Einstein">
+  <span property="foaf:name">Albert Einstein</span>
+  <span property="dbp:dateOfBirth" datatype="xsd:date">1879-03-14</span>
+  <div rel="dbp:birthPlace" resource="http://dbpedia.org/resource/German_Empire">
+    <span property="dbp:conventionalLongName">the German Empire</span>
+  </div>
+</div>
+
+<div about="http://dbpedia.org/resource/Albert_Einstein">
+  <div rel="dbp-owl:residence" resource="http://dbpedia.org/resource/German_Empire"></div>
+  <div rel="dbp-owl:residence" resource="http://dbpedia.org/resource/Switzerland"></div>
+</div>
+or with incomplete triple
+<div about="http://dbpedia.org/resource/Albert_Einstein" rel="dbp-owl:residence">
+  <span about="http://dbpedia.org/resource/German_Empire"></span>
+  <span about="http://dbpedia.org/resource/Switzerland"></span>
+</div>
+
+
+<span property="http://purl.org/dc/terms/created" content="2011-09-10">10th of September, 2011</span>
+<span property="dc:modified" content="2015-09-16T16:00:00-05:00" datatype="xsd:dateTime">16 September 2015</span>
+<span property="dc:date" datatype="xsd:gYear">2011</span>
+
+<ul>
+  <li about="/alice/posts/trouble_with_bob" property="title">The trouble with Bob</li>
+  <li about="/alice/posts/jos_barbecue" property="title">Jo's Barbecue</li>
+  ...
+</ul>
+The fundamental difference between about and resource is that the former is only used to set the context, whether combined with the property attribute on the same element or not.
+
+
+<div vocab="http://xmlns.com/foaf/0.1/" resource="#me">
+   <ul>
+      <li property="knows" resource="http://example.com/bob/#me" typeof="Person">
+        <a property="homepage" href="http://example.com/bob/"><span property="name">Bob</span></a>
+      </li>
+      <li property="knows" resource="http://example.com/eve/#me" typeof="Person">
+        <a property="homepage" href="http://example.com/eve/"><span property="name">Eve</span></a>
+      </li>
+      <li property="knows" resource="http://example.com/manu/#me" typeof="Person">
+        <a property="homepage" href="http://example.com/manu/"><span property="name">Manu</span></a>
+      </li>
+   </ul>
+</div>
+or
+<div vocab="http://xmlns.com/foaf/0.1/" resource="#me">
+   <ul rel="knows">
+      <li resource="http://example.com/bob/#me" typeof="Person">
+        <a property="homepage" href="http://example.com/bob/"><span property="name">Bob</span></a>
+      </li>
+      <li resource="http://example.com/eve/#me" typeof="Person">
+        <a property="homepage" href="http://example.com/eve/"><span property="name">Eve</span></a>
+      </li>
+      <li resource="http://example.com/manu/#me" typeof="Person">
+        <a property="homepage" href="http://example.com/manu/"><span property="name">Manu</span></a>
+      </li>
+   </ul>
+</div>
+In simple cases the @property property can also be used in place of @rel. Indeed, in case when the element does not contain @rel, @datatype, or @content, but there is, for example, a @href, the effect of @property is analogous to the role of @rel.
+
+
+<div about="http://dbpedia.org/resource/Albert_Einstein">
+  <span property="foaf:name">Albert Einstein</span>
+  <span property="dbp:dateOfBirth" datatype="xsd:date">1879-03-14</span>
+  <div property="dbp:birthPlace" resource="http://dbpedia.org/resource/German_Empire">
+    <span property="dbp:conventionalLongName">the German Empire</span>
+  </div>
+</div>
+If use rel, the subject for 'the German Empire' would remain Albert Einstein (and that would, of course, be an error). This is the main difference between @property and @rel: the latter induces chaining, whereas the former, usually, does not.
+
+<link about="_:john" rel="foaf:mbox" href="mailto:john@example.org" />
+<link about="_:sue" rel="foaf:mbox"  href="mailto:sue@example.org" />
+<link about="_:john" rel="foaf:knows" resource="_:sue" />
+
+
+ If the current element contains no @rel or @rev attribute, then the next step is to establish a value for new subject. This step has two possible alternatives.
+
+    If the current element contains the @property attribute, but does not contain either the @content or @datatype attributes, then
+    new subject is set to the resource obtained from the first match from the following rule:
+        by using the resource from @about, if present, obtained according to the section on CURIE and IRI Processing;
+        otherwise, if the element is the root element of the document, then act as if there is an empty @about present, and process it according to the rule for @about, above;
+        otherwise, if parent object is present, new subject is set to the value of parent object.
+
+    If @typeof is present then typed resource is set to the resource obtained from the first match from the following rules:
+        by using the resource from @about, if present, obtained according to the section on CURIE and IRI Processing;
+        otherwise, if the element is the root element of the document, then act as if there is an empty @about present and process it according to the previous rule;
+        otherwise,
+            by using the resource from @resource, if present, obtained according to the section on CURIE and IRI Processing;
+            otherwise, by using the IRI from @href, if present, obtained according to the section on CURIE and IRI Processing;
+            otherwise, by using the IRI from @src, if present, obtained according to the section on CURIE and IRI Processing;
+            otherwise, the value of typed resource is set to a newly created bnode.
+            The value of the current object resource is then set to the value of typed resource.
+    otherwise:
+        If the element contains an @about, @href, @src, or @resource attribute, new subject is set to the resource obtained as follows:
+            by using the resource from @about, if present, obtained according to the section on CURIE and IRI Processing;
+            otherwise, by using the resource from @resource, if present, obtained according to the section on CURIE and IRI Processing;
+            otherwise, by using the IRI from @href, if present, obtained according to the section on CURIE and IRI Processing;
+            otherwise, by using the IRI from @src, if present, obtained according to the section on CURIE and IRI Processing.
+        otherwise, if no resource is provided by a resource attribute, then the first match from the following rules will apply:
+            if the element is the root element of the document, then act as if there is an empty @about present, and process it according to the rule for @about, above;
+            otherwise, if @typeof is present, then new subject is set to be a newly created bnode;
+            otherwise, if parent object is present, new subject is set to the value of parent object. Additionally, if @property is not present then the skip element flag is set to 'true'.
+
+        Finally, if @typeof is present, set the typed resource to the value of new subject.
+
+If the current element does contain a @rel or @rev attribute, then the next step is to establish both a value for new subject and a value for current object resource:
+new subject is set to the resource obtained from the first match from the following rules:
+
+    by using the resource from @about, if present, obtained according to the section on CURIE and IRI Processing;
+
+if the @typeof attribute is present, set typed resource to new subject.
+
+If no resource is provided then the first match from the following rules will apply:
+
+    if the element is the root element of the document then act as if there is an empty @about present, and process it according to the rule for @about, above;
+    otherwise, if parent object is present, new subject is set to that.
+
+Then the current object resource is set to the resource obtained from the first match from the following rules:
+
+    by using the resource from @resource, if present, obtained according to the section on CURIE and IRI Processing;
+    otherwise, by using the IRI from @href, if present, obtained according to the section on CURIE and IRI Processing;
+    otherwise, by using the IRI from @src, if present, obtained according to the section on CURIE and IRI Processing;
+    otherwise, if @typeof is present and @about is not, use a newly created bnode.
+
+If @typeof is present and @about is not, set typed resource to current object resource.
+
+Note that final value of the current object resource will either be null (from initialization) or a full IRI or bnode.
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Jo's Blog</title>
+  </head>
+  <body>
+    <h1><span property="dc:creator">Jo</span>'s blog</h1>
+    <p>
+      Welcome to my blog.
+    </p>
+  </body>
+</html>
+
+which would still generate the triple:
+<> dc:creator "Jo" .
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <base href="http://www.example.org/jo/blog" />
+    <title>Jo's Friends and Family Blog</title>
+    <link rel="foaf:primaryTopic" href="#bbq" />
+    <meta property="dc:creator" content="Jo" />
+  </head>
+  <body>
+    ...
+  </body>
+</html>
+
+An RDFa Processor should now generate the following triples, regardless of the IRI from which the document is served:
+<http://www.example.org/jo/blog> foaf:primaryTopic <http://www.example.org//jo/blog#bbq> .
+<http://www.example.org/jo/blog> dc:creator "Jo" .
+
+
+<div about="http://dbpedia.org/resource/Albert_Einstein">
+  <div rel="dbp:birthPlace" typeof="http://schema.org/Country">
+    <span property="dbp:conventionalLongName">the German Empire</span>
+  </div>
+</div>
+
+generates:
+<http://dbpedia.org/resource/Albert_Einstein"> dbp:birthPlace _:b .
+_:b dbp:conventionalLongName "the German Empire" .
+
+
+
+<h2 property="dc:title" datatype="rdf:XMLLiteral">
+  E = mc<sup>2</sup>: The Most Urgent Problem of Our Time
+</h2>
+
+This would generate the following triple, with the XML preserved in the literal:
+<> dc:title "E = mc<sup>2</sup>: The Most Urgent Problem of Our Time"^^rdf:XMLLiteral .
+
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 Exemplo usando a tag span:
 <p>
@@ -17,6 +349,14 @@ I'm currently reading
 <span property="dc:title">Programming Perl</span>
 by <span property="dc:creator">Larry Wall</span>
 </span>.
+</p>
+
+<p vocab="http://xmlns.com/foaf/0.1/" resource="#harald" typeof="Person">
+My name is
+<span property="name">Harald Sack</span>
+and you can give me a ring via
+<span property="phone">1-800-555-0527</span>.
+<img property="img" src="http://hpi-web.de/images/harald.jpg" />
 </p>
 
 
@@ -105,4 +445,27 @@ Triples of above document:
 <http://example.org/john-d/#me> <http://xmlns.com/foaf/0.1/interest> <urn:ISBN:0752820907> .
 <urn:ISBN:0752820907> <http://purl.org/dc/elements/1.1/title> "Weaving the Web"@en .
 <urn:ISBN:0752820907> <http://purl.org/dc/elements/1.1/creator> "Tim Berners-Lee"@en .
+
+
+
+<div typeof="ime:Aluno" about="ime:Celso" xmlns:ime="http://ime.eb.br/vocabulario">
+Olá! Meu nome é <span property="ime:temNome">Celso Fontes</span>, tenho
+<span property="ime:idade" datatype="xsd:integer">25</span>
+anos, sou orientado pelas professoras:
+<span rel="ime:orientadoPor">
+<div typeof="ime:Professor"><span property="ime:temNome" about="[_:Ana]">Ana Maria</span></div> e
+<div typeof="ime:Professor"><span property="ime:temNome">Maria Cláudia </span><span rel="ime:conhece" resource="[_:Ana]"></span></div>
+</span>
+</div>
+
+Foram utilizados novos atributos (typeof, property, datatype e about) no HTML
+about para declarar o nome do sujeito as da relação;
+typeof para indicar o "tipo" (classes Aluno e Professor) dos sujeitos a exemplo de "ime:Celso", sendo este um individual da ontologia;
+property e rel, utilizados para declarar o predicado-literal "temNome" e "temIdade" e o predicado-objeto "orientadoPor".
+Os objetos ao, constituintes do predicado "ime:orientadoPor", são os indivíduos anônimos do tipo "ime:Professor".
+Os indivíduos anônimos possuem o predicado "ime:temNome" de valores literais "Ana Maria" e "Maria Cláudia", respectivamente.
+
+
+http://www.google.com/webmasters/tools/richsnippets
+verifica dados estruturados na página
 

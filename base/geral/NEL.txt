@@ -1,0 +1,70 @@
+Named Entity Linking (NEL)
+aka, Entity linking, Named Entity Disambiguation (NED), entity disambiguation, wikification, named entity normalization
+https://en.wikipedia.org/wiki/Entity_linking
+
+Named Entity Recognition and Disambiguation (NERD)
+
+<ENTITY url="http://en.wikipedia.org/wiki/Michael_I._Jordan"> Michael Jordan </ENTITY> is a professor at  <ENTITY url="http://en.wikipedia.org/wiki/University_of_California,_Berkeley"> Berkeley </ENTITY>
+
+
+Entity Discovery and Linking
+In Entity Linking, the second stage of EDL, you will indicate whether or not the entities
+annotated and clustered together in the Entity Discovery stage are included in the
+Knowledge Base (KB). This is done by searching the KB interface in the tool for an entity,
+determining the proper corresponding entry, and then selecting one of the following labels:
+- Linking them to KB entries in which they are the central topic
+- Marking them as NIL (i.e., not included in the KB)
+- Marking them as Unknown (i.e., impossible to determine whether the mention is for
+any particular entity in the KB)
+
+Tarcísio Meira nasceu em 1930.
+
+entity linking
+
+SemLinker
+
+http://www.alias-i.com/lingpipe/
+
+
+Demos
+• UIUC Wikification Demo
+o http://cogcomp.cs.illinois.edu/demo/wikify/?id=25
+• RPI Wikification Demo
+o http://orion.tw.rpi.edu/~zhengj3/wod/search.php
+o http://orion.tw.rpi.edu/~zhengj3/wod/link.php
+
+http://babelfy.org
+
+http://www.mpi-inf.mpg.de/yago-naga/aida/
+
+
+Five entity types are to be annotated, for all languages in 2016 EDL:
+persons (PER)
+organizations (ORG)
+geo-political entities (GPE)
+locations (LOC)
+facilities (FAC)
+
+PER is limited to individual humans. Groups of people (including e.g., families, sisters,
+married couples, etc.) are not valid person entities for EDL.
+
+A facility is a functional, primarily man-made structure. This includes buildings and similar
+facilities designed for human habitation, such as houses, factories, stadiums, office buildings,
+gymnasiums, prisons, museums, and space stations; objects of similar size designed for
+storage, such as barns, parking garages and airplane hangars; elements of transportation
+infrastructure, including streets, highways, airports, ports, train stations, bridges, and tunnels.
+Roughly speaking, facilities are artifacts falling under the domains of architecture and civil
+engineering.
+
+Locations (LOC)
+Location entities are geographically or astronomically defined places that do not have a
+political component or natural structures like bodies of water and mountains. Examples of
+place-related strings that are tagged as LOC include heavenly bodies, continents, non-
+politically-defined regions, oceans, seas, straits, bays, channels, sounds, rivers, islands,
+lakes, parks, and mountains.
+
+GPEs are composite entities comprised of a government, a physical
+location, and a population, with common types including countries, states, provinces,
+counties, cities, and towns.
+
+

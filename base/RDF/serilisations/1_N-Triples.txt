@@ -1,12 +1,15 @@
-N-Triples is a format for storing and transmitting data. It is a line-based, plain text serialisation format for RDF (Resource Description Framework) graphs, and a subset of the Turtle (Terse RDF Triple Language) format. N-Triples should not be confused with Notation3 which is a superset of Turtle.
+N-Triples is a subset of the Turtle.
 
 Filename extension: .nt
 Internet media type: application/n-triples
-Developed by: W3C
 Specification: http://www.w3.org/TR/rdf-testcases/#ntriples
 http://www.w3.org/TR/n-triples/
 http://blog.datagraph.org/2010/03/grepping-ntriples
 http://blog.datagraph.org/2010/04/transmuting-ntriples
+
+N-Triples do not allow lines to be wrapped arbitrarily: the line endings indicate the end of a statement.
+Comments consist of a line beginning with a hash sign.
+Literals are represented as printable ASCII(0x20 to 0x7E) strings.
 
 Canonical N-Triples has the following additional constraints on layout:
  - The whitespace following subject, predicate, and object MUST be a single space, (U+0020).
@@ -14,17 +17,12 @@ Canonical N-Triples has the following additional constraints on layout:
  - HEX MUST use only uppercase letters ([A-F]).
  - Characters MUST NOT be represented by UCHAR.
  - Within STRING_LITERAL_QUOTE, only the characters U+0022, U+005C, U+000A, U+000D are encoded using ECHAR. ECHAR MUST NOT be used for characters that are allowed directly in STRING_LITERAL_QUOTE.
-N-Triples do not allow lines to be wrapped arbitrarily: the line endings indicate the end of a statement.
-Comments consist of a line beginning with a hash sign.
 
-UCHAR 	::= 	'\u' HEX HEX HEX HEX | '\U' HEX HEX HEX HEX HEX HEX HEX HEX
-ECHAR 	::= 	'\' [tbnrf"'\]
-STRING_LITERAL_QUOTE 	::= 	'"' ([^#x22#x5C#xA#xD] | ECHAR | UCHAR)* '"' /* #x22=" #x5C=\ #xA=new line #xD=carriage return */
-IRIREF 	::= 	'<' ([^#x00-#x20<>"{}|^`\] | UCHAR)* '>' /* #x00=NULL #01-#x1F=control codes #x20=space */
+UCHAR                 = '\u' HEX HEX HEX HEX | '\U' HEX HEX HEX HEX HEX HEX HEX HEX
+ECHAR                 = '\' [tbnrf"'\]
+STRING_LITERAL_QUOTE  = '"' ([^#x22#x5C#x0A#x0D] | ECHAR | UCHAR)* '"'   /* #x22=" #x5C=\ #x0A=new line #x0D=carriage return */
+IRIREF                = '<' ([^#x00-#x20<>"{}|^`\] | UCHAR)* '>'         /* #x00=NULL #01-#x1F=control codes #x20=space */
 
-
-Subjects may take the form of a URI or a Blank node; predicates must be a URI; objects may be a URI, blank node or a literal. URIs are delimited with less-than and greater-than signs used as angle brackets. Blank nodes are represented by an alphanumeric string, prefixed with an underscore and colon (_:).
-Literals are represented as printable ASCII(0x20 to 0x7E) strings (with backslash escapes), delimited with double-quote characters, and optionally suffixed with a language or datatype indicator. Language indicators are an at sign followed by an language tag; datatype indicators are a double-caret followed by a URI.
 
 Exemplo:
 <http://www.w3.org/2001/sw/RDFCore/ntriples/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Document> .
